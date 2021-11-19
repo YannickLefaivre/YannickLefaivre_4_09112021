@@ -6,6 +6,7 @@
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="./public/css/modal.css" /> <!-- Correction of stylesheet file path to reflect the precedent change occured in the root directory structure -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
@@ -15,7 +16,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="./pictures/Logo.png" width="auto" height="auto" /> <!-- Correction of the logo file path to reflect  the precedent change occured in the root directory structure -->
     </div>
     <div class="main-navbar">
       
@@ -46,7 +47,7 @@
           </button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="./pictures/bg_img.jpg" alt="img" /> <!-- Correction of the main content background image file path to reflect the precedent change occured in the root directory structure -->
         </div>
         <button class="btn-signup modal-btn">
           je m'inscris
@@ -216,6 +217,6 @@
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
+    <script src="./src/modal.js"></script> <!-- Correction of the script file path to reflect the precedent change occured in the root directory structure -->
   </body>
 </html>
