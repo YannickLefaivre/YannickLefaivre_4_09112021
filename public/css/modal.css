@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /* Removing of the background-image pointing to a non existent ressource/image */
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
