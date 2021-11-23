@@ -1,87 +1,515 @@
 /* Correction of code indentation for better readability  */
 
 :root {
-  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
-  --font-slab: var(--font-default);
-  --modal-duration: 0.8s;
+	--font-default: "DM Sans", Arial, Helvetica, sans-serif;
+	--font-slab: var(--font-default);
+	--modal-duration: 0.8s;
 }
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
-/* Landing Page */
+/* ---- Landing Page ---- */
+
+/* - Base style - */
 
 body {
-  /* Removing an unnecessary declaration of the margin property */
-  display: flex;
-  flex-direction: column;
-  /* Removal of the background-image pointing to a non existent ressource/image */
-  font-family: var(--font-default);
-  font-size: 18px;
-  max-width: 1300px;
-  margin: 0 auto;
+	/* Removing an unnecessary declaration of the margin property */
+	display: flex;
+	flex-direction: column;
+	/* Removal of the background-image pointing to a non existent ressource/image */
+	font-family: var(--font-default);
+	font-size: 18px;
+	max-width: 1300px;
+	margin: 0 auto;
 }
 
-p {
-  margin-bottom: 0;
-  padding: 0.5vw;
-}
+/* Removed unnecessary declaration to style all <p> elements */
 
 /* Removal of the padding-right of img element because it doesn't affect the layout */
 
+/* - Header - */
+
 .topnav {
-  /* I removed the overflow: hidden; declaration to make the overflow visible to prevent the cut of the red background of the hamburger menu */
-  margin: 3.5%;
+	/* I removed the overflow: hidden; declaration to make the overflow visible to prevent the cut of the red background of the hamburger menu */
+	margin: 3rem; /* Aligning the header margin with other sections of the application */
 }
 .header-logo {
-  float: left;
+	float: left;
 }
 .main-navbar {
-  float: right;
+	float: right;
 }
 .topnav a {
-  float: left;
-  display: block;
-  color: #000000;
-  text-align: center;
-  padding: 12px 12px;
-  margin: 5px;
-  text-decoration: none;
-  font-size: 20px;
-  font-family: Roboto, sans-serif;
+	float: left;
+	display: block;
+	color: #000000;
+	text-align: center;
+	padding: 12px 12px;
+	margin: 5px;
+	text-decoration: none;
+	font-size: 20px;
+	font-family: Roboto, sans-serif;
 }
 
 .topnav a:hover {
-  background-color: #ff0000;
-  color: #ffffff;
-  border-radius: 15px;
+	background-color: #ff0000;
+	color: #ffffff;
+	border-radius: 15px;
 }
 
 .topnav a.active {
-  background-color: #ff0000;
-  color: #ffffff;
-  border-radius: 15px;
+	background-color: #ff0000;
+	color: #ffffff;
+	border-radius: 15px;
 
-  /* Addition of the same underline as on the mockup */
-  text-decoration: underline;
-  text-underline-position: under;
+	/* Addition of the same underline as on the mockup */
+	text-decoration: underline;
+	text-underline-position: under;
 }
 
 .topnav .icon {
-  display: none;
+	display: none;
+}
+
+/* - Main content - */
+
+main {
+	margin: 1.5rem 3rem; /* Changed the margin so that the main content can be aligned with the header */
+	font-size: 130%;
+	font-weight: bolder;
+	color: black;
+	/* Removed padding because the hero card shape is obtained otherwise with the margin property */
+
+	/* Removed the rounded border of the main that has no apparent effect on the layout */
+
+	/* Removal of justifying text alignment which is not necessary as it is reset to "left" for hero-content text */
 }
 
 /* Removal of the display: none; declaration of the hamburger menu icon on tablet so that it is displayed on this device  */
 
+.modal-btn {
+	font-size: 145%;
+	background: #fe142f;
+	display: flex;
+	margin: auto;
+	padding: 2em;
+	color: #fff;
+	padding: 0.75rem 2.5rem;
+	border-radius: 1rem;
+	cursor: pointer;
+}
+
+.modal-btn:hover {
+	background: #3876ac;
+}
+
+/* Removed unused class selector .footer */
+
+/* Modal form */
+
+.button {
+	background: #fe142f;
+	margin-top: 0.5em;
+	padding: 1em;
+	color: #fff;
+	border-radius: 15px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.button:hover {
+	background: #3876ac;
+}
+
+/* Removed unused class selector .smFont */
+
+.bground {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(26, 39, 156, 0.4);
+}
+
+.content {
+	margin: 5% auto;
+	width: 100%;
+	max-width: 500px;
+	animation-name: modalopen;
+	animation-duration: var(--modal-duration);
+	background: #232323;
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+	color: #fff;
+	padding-top: 10px;
+}
+
+.modal-body {
+	padding: 15px 8%;
+	margin: 15px auto;
+}
+
+label {
+	font-family: var(--font-default);
+	font-size: 17px;
+	font-weight: normal;
+	display: inline-block;
+	margin-bottom: 11px;
+}
+input {
+	padding: 8px;
+	border: 0.8px solid #ccc;
+	outline: none;
+}
+.text-control {
+	margin: 0;
+	padding: 8px;
+	width: 100%;
+	border-radius: 8px;
+	font-size: 20px;
+	height: 48px;
+}
+.formData[data-error]::after {
+	content: attr(data-error);
+	font-size: 0.4em;
+	color: #e54858;
+	display: block;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	text-align: right;
+	line-height: 0.3;
+	opacity: 0;
+	transition: 0.3s;
+}
+.formData[data-error-visible="true"]::after {
+	opacity: 1;
+}
+.formData[data-error-visible="true"] .text-control {
+	border: 2px solid #e54858;
+}
+/* 
+input[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: red;
+} */
+.checkbox-label,
+.checkbox2-label {
+	position: relative;
+	margin-left: 36px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.checkbox-label .checkbox-icon,
+.checkbox2-label .checkbox-icon {
+	display: block;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #279e7a;
+	border-radius: 50%;
+	text-indent: 29px;
+	white-space: nowrap;
+	position: absolute;
+	left: -30px;
+	top: -1px;
+	transition: 0.3s;
+}
+.checkbox-label .checkbox-icon::after,
+.checkbox2-label .checkbox-icon::after {
+	content: "";
+	width: 13px;
+	height: 13px;
+	background-color: #279e7a;
+	border-radius: 50%;
+	text-indent: 29px;
+	white-space: nowrap;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: 0.3s;
+	opacity: 0;
+}
+.checkbox-input {
+	display: none;
+}
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
+	opacity: 1;
+}
+.checkbox-input:checked + .checkbox2-label .checkbox-icon {
+	background: #279e7a;
+}
+.checkbox2-label .checkbox-icon {
+	border-radius: 4px;
+	border: 0;
+	background: #c4c4c4;
+}
+.checkbox2-label .checkbox-icon::after {
+	width: 7px;
+	height: 4px;
+	border-radius: 2px;
+	background: transparent;
+	border: 2px solid transparent;
+	border-bottom-color: #fff;
+	border-left-color: #fff;
+	transform: rotate(-55deg);
+	left: 21%;
+	top: 19%;
+}
+.close {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	width: 32px;
+	height: 32px;
+	opacity: 1;
+	cursor: pointer;
+	transform: scale(0.7);
+}
+.close:before,
+.close:after {
+	position: absolute;
+	left: 15px;
+	content: " ";
+	height: 33px;
+	width: 3px;
+	background-color: #fff;
+}
+.close:before {
+	transform: rotate(45deg);
+}
+.close:after {
+	transform: rotate(-45deg);
+}
+.btn-submit,
+.btn-signup {
+	background: #fe142f;
+	display: block;
+	margin: 0 auto;
+	border-radius: 7px;
+	font-size: 1rem;
+	padding: 12px 82px;
+	color: #fff;
+	cursor: pointer;
+	border: 0;
+}
+/* custom select styles */
+.custom-select {
+	position: relative;
+	font-family: Arial;
+	font-size: 1.1rem;
+	font-weight: normal;
+}
+
+.custom-select select {
+	display: none;
+}
+.select-selected {
+	background-color: #fff;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+	position: absolute;
+	content: "";
+	top: 10px;
+	right: 13px;
+	width: 11px;
+	height: 11px;
+	border: 3px solid transparent;
+	border-bottom-color: #f00;
+	border-left-color: #f00;
+	transform: rotate(-48deg);
+	border-radius: 5px 0 5px 0;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+	transform: rotate(135deg);
+	top: 13px;
+}
+
+.select-items div,
+.select-selected {
+	color: #000;
+	padding: 11px 16px;
+	border: 1px solid transparent;
+	border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+	cursor: pointer;
+	border-radius: 8px;
+	height: 48px;
+}
+
+/* Style items (options): */
+.select-items {
+	position: absolute;
+	background-color: #fff;
+	top: 89%;
+	left: 0;
+	right: 0;
+	z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+	display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+/* custom select end */
+.text-label {
+	font-weight: normal;
+	font-size: 16px;
+}
+.hero-section {
+	min-height: 33rem; /* Changed the value of min-height so that the hero can get as close as possible to the height he has on the model on small computer (laptops) */
+	max-height: 40rem;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	overflow: hidden;
+	box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+	margin-bottom: 10px;
+}
+.hero-content {
+	min-height: 34rem;
+	max-height: 40rem;
+	padding: 51px 67px;
+	grid-column: span 4;
+	background: #232323;
+	color: #fff;
+	position: relative;
+	text-align: left;
+	min-width: 424px;
+}
+.hero-content::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background: #232323;
+	position: absolute;
+	right: -80px;
+	top: 0;
+}
+.hero-content > * {
+	position: relative;
+	z-index: 1;
+}
+.hero-headline {
+	font-size: 6rem;
+	/* Removed the declaration setting the headline font weight to normal so that it keeps its font weight in bold */
+	white-space: nowrap;
+}
+.hero-text {
+	width: 146%;
+	font-weight: normal;
+	margin-top: 57px;
+	padding: 0;
+}
+.btn-signup {
+	outline: none;
+	text-transform: capitalize;
+	font-size: 1.5rem;
+	padding: 15px 23px;
+	margin: 0;
+	margin-top: 59px;
+}
+.hero-img {
+	grid-column: span 8;
+	min-height: 34rem;
+	max-height: 40rem;
+}
+.hero-img img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+	/* Removed padding of img element from .hero-img because global padding-right declaration on img elements has been removed */
+}
+.copyrights {
+	color: #fe142f;
+	padding: 0;
+	font-size: 1rem;
+	margin: 60px 0 30px;
+	font-weight: bolder;
+}
+.hero-section > .btn-signup {
+	display: none;
+}
+
+/* - Footer - */
+
+footer {
+	padding-left: 2vw;
+	padding-right: 2vw;
+	margin: 0 20px;
+}
 
 /* --- Correction of PC layout --- */
 
+/* Ajust the size of the hero on full HD (4k) device in landscape orientation */
+@media screen and (max-width: 1080px) {
+	/* Main content */
+
+	.hero-section {
+		max-height: 34rem;
+	}
+}
+
+@media screen and (max-width: 1150px) {
+	/* Main content */
+
+	main {
+		font-size: 118%;
+	}
+	.hero-content::after {
+		right: -11px;
+	}
+	.hero-headline {
+		font-size: 4.5rem;
+	}
+	.hero-text {
+		margin-top: 59px;
+	}
+}
+
+@media screen and (max-width: 1129px) {
+	/* Header */
+
+	.topnav {
+		margin: 3rem;
+	}
+
+	/* Main content */
+
+	main {
+		font-size: 113%;
+	}
+	.hero-content::after {
+		right: -5px;
+		top: 1px;
+	}
+	.hero-headline {
+		font-size: 4rem;
+	}
+}
+
 @media screen and (max-width: 1090px) {
-  .topnav a {
-    font-size: 17px;
-  }
+	.topnav a {
+		font-size: 17px;
+	}
 }
 
 /* ---- Correction of mobile, tablette and also PC layout ---- */
@@ -93,501 +521,230 @@ p {
 **
 */
 
-@media screen and (max-width: 1023px) { 
-  .topnav {
-    margin: 6% 8% 3.5%; /* Placement of the header element as in the mockup */
-  
-    display: grid; /* 1 */
-    grid-template-columns: 5fr 1fr; /* 1 */
-    align-items: baseline; /* 1 */
-  }
-  .header-logo {
-    float: none; /* 2 */
-    grid-row: 1; /* 1 */
-    grid-column: 1; /* 1 */
-  }
+@media screen and (max-width: 1023px) {
+	.topnav {
+		margin: 6% 8% 3.5%; /* Placement of the header element as in the mockup */
 
-  /* Narrowing the size of the logo to be the same size as on the mobile mockup */
-  .header-logo img {
-    height: 35px;
-    object-fit: contain;
-  }
+		display: grid; /* 1 */
+		grid-template-columns: 5fr 1fr; /* 1 */
+		align-items: baseline; /* 1 */
+	}
+	.header-logo {
+		float: none; /* 2 */
+		grid-row: 1; /* 1 */
+		grid-column: 1; /* 1 */
+	}
 
-  .main-navbar {
-    float: none; /* 2 */
-    grid-row: 1; /* 1 */
-    grid-column: 1/-1; /* 1 */
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  .topnav a {
-    display: none;
-    float: none; /* 2 */
-    font-size: 25px;
-  }
+	/* Narrowing the size of the logo to be the same size as on the mobile mockup */
+	.header-logo img {
+		height: 35px;
+		object-fit: contain;
+	}
 
-  .topnav .icon:hover {
-    color: #fff;
-  }
+	.main-navbar {
+		float: none; /* 2 */
+		grid-row: 1; /* 1 */
+		grid-column: 1/-1; /* 1 */
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	.topnav a {
+		display: none;
+		float: none; /* 2 */
+		font-size: 25px;
+	}
 
-  .topnav a.icon {
-    float: none; /* 2 */
-    display: block;
-    color: #f00;
-    font-size: 2.1rem;
+	.topnav .icon:hover {
+		color: #fff;
+	}
 
-    /* Removed the top margin of the hamburger menu icon because its margin from the top of the web page is now managed with the margin of its container (.topnav) */
-    
-    order: -1; /* This property places the hamburger menu button at the top of the navigation links list in the main-navbar column */
-    justify-self: flex-end;
-  }
+	.topnav a.icon {
+		float: none; /* 2 */
+		display: block;
+		color: #f00;
+		font-size: 2.1rem;
 
-  .topnav.responsive a {
-    display: block;
-    text-align: left;
-    grid-column: -1;
-  }
+		/* Removed the top margin of the hamburger menu icon because its margin from the top of the web page is now managed with the margin of its container (.topnav) */
+
+		order: -1; /* This property places the hamburger menu button at the top of the navigation links list in the main-navbar column */
+		justify-self: flex-end;
+	}
+
+	.topnav.responsive a {
+		display: block;
+		text-align: left;
+		grid-column: -1;
+	}
+
+	/* Main content */
+
+	main {
+		padding: 0;
+		margin: 0 8%; /* Aligning the main content margin with other sections of the application */
+		font-size: 113%;
+	}
+
+	.hero-section {
+		min-height: unset;
+		max-height: unset;
+		box-shadow: 0px 10px 8px 0px rgba(0, 0, 0, 0.2);
+	}
+	.hero-text {
+		width: 120%;
+	}
+	.hero-img img {
+		object-fit: cover;
+	}
 }
-
-/* Adaptation of the size of the hamburger menu and of the company logo on mobile and tablet */
+/* Adaptation of the landing page element on mobile and tablette */
 
 @media screen and (max-width: 999px) {
-  .topnav a {
-    font-size: 20px;
-  }
+	/* Header */
+
+	.header-logo img {
+		height: 30px;
+	}
+	.topnav a {
+		font-size: 20px;
+	}
+	.topnav a.icon {
+		font-size: 1.9rem;
+	}
+
+	/* Main content */
+
+	.hero-section {
+		row-gap: 1.5rem;
+		justify-items: center;
+		box-shadow: unset;
+	}
+	.hero-content {
+		width: 100%;
+		grid-column: 1/-1;
+		grid-row: 1;
+		min-width: auto;
+		padding: 0;
+		background: #fff;
+		color: #000;
+	}
+	.hero-content::after {
+		content: unset;
+	}
+	.hero-content .btn-signup {
+		display: none;
+	}
+	.hero-headline {
+		font-weight: bolder;
+		font-size: 4rem;
+		text-transform: capitalize;
+		white-space: normal;
+	}
+	.hero-text {
+		width: unset;
+		padding: 0;
+		margin-top: 2rem;
+		font-size: 1.5rem;
+	}
+	.hero-img {
+		grid-column: 1/-1;
+		grid-row: 2;
+		width: 66.6%;
+	}
+	.hero-img img {
+		border-radius: 10px;
+	}
+	.hero-section > .btn-signup {
+		grid-column: 1/-1;
+		grid-row: 3;
+		display: block;
+		margin-top: 1.5rem;
+		padding: 0.5rem 2.5rem;
+	}
+	.copyrights {
+		margin-top: 50px;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	/* Main content */
+
+	.hero-headline {
+		font-size: 3rem;
+	}
+	.hero-text {
+		font-size: 1.2rem;
+	}
+	.hero-img {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 599px) {
-  .header-logo img {
-    height: 20px;
-  }
+	/* Header */
 
-  .topnav a.icon {
-    font-size: 1.5rem;
-  }
+	.header-logo img {
+		height: 20px;
+	}
+
+	.topnav a.icon {
+		font-size: 1.3rem;
+	}
+
+	/* Main content */
+
+	.hero-img {
+		width: 100%;
+	}
+	.hero-headline {
+		font-size: 2.1rem;
+	}
+	.hero-text {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.hero-section {
+		row-gap: 1.3rem;
+	}
+	.hero-text {
+		margin-top: 1.5rem;
+		font-size: 0.8rem;
+	}
 }
 
 @media screen and (max-width: 320px) {
-  .topnav a {
-    font-size: 18px;
-  }
-}
+	/* Header */
 
-main {
-  font-size: 130%;
-  font-weight: bolder;
-  color: black;
-  padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
-  border-radius: 2rem;
-  text-align: justify;
-}
+	.topnav a {
+		font-size: 18px;
+	}
 
-.modal-btn {
-  font-size: 145%;
-  background: #fe142f;
-  display: flex;
-  margin: auto;
-  padding: 2em;
-  color: #fff;
-  padding: 0.75rem 2.5rem;
-  border-radius: 1rem;
-  cursor: pointer;
-}
+	/* Main content */
 
-.modal-btn:hover {
-  background: #3876ac;
-}
-
-/* Removed unused class selector .footer */
-
-/* Modal form */
-
-.button {
-  background: #fe142f;
-  margin-top: 0.5em;
-  padding: 1em;
-  color: #fff;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.button:hover {
-  background: #3876ac;
-}
-
-/* Removed unused class selector .smFont */
-
-.bground {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
-}
-
-.content {
-  margin: 5% auto;
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
-}
-
-.modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
-}
-
-label {
-  font-family: var(--font-default);
-  font-size: 17px;
-  font-weight: normal;
-  display: inline-block;
-  margin-bottom: 11px;
-}
-input {
-  padding: 8px;
-  border: 0.8px solid #ccc;
-  outline: none;
-}
-.text-control {
-  margin: 0;
-  padding: 8px;
-  width: 100%;
-  border-radius: 8px;
-  font-size: 20px;
-  height: 48px;
-}
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-}
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
-.checkbox-label,
-.checkbox2-label {
-  position: relative;
-  margin-left: 36px;
-  font-size: 12px;
-  font-weight: normal;
-}
-.checkbox-label .checkbox-icon,
-.checkbox2-label .checkbox-icon {
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #279e7a;
-  border-radius: 50%;
-  text-indent: 29px;
-  white-space: nowrap;
-  position: absolute;
-  left: -30px;
-  top: -1px;
-  transition: 0.3s;
-}
-.checkbox-label .checkbox-icon::after,
-.checkbox2-label .checkbox-icon::after {
-  content: "";
-  width: 13px;
-  height: 13px;
-  background-color: #279e7a;
-  border-radius: 50%;
-  text-indent: 29px;
-  white-space: nowrap;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.3s;
-  opacity: 0;
-}
-.checkbox-input {
-  display: none;
-}
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
-  opacity: 1;
-}
-.checkbox-input:checked + .checkbox2-label .checkbox-icon {
-  background: #279e7a;
-}
-.checkbox2-label .checkbox-icon {
-  border-radius: 4px;
-  border: 0;
-  background: #c4c4c4;
-}
-.checkbox2-label .checkbox-icon::after {
-  width: 7px;
-  height: 4px;
-  border-radius: 2px;
-  background: transparent;
-  border: 2px solid transparent;
-  border-bottom-color: #fff;
-  border-left-color: #fff;
-  transform: rotate(-55deg);
-  left: 21%;
-  top: 19%;
-}
-.close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 32px;
-  opacity: 1;
-  cursor: pointer;
-  transform: scale(0.7);
-}
-.close:before,
-.close:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 33px;
-  width: 3px;
-  background-color: #fff;
-}
-.close:before {
-  transform: rotate(45deg);
-}
-.close:after {
-  transform: rotate(-45deg);
-}
-.btn-submit,
-.btn-signup {
-  background: #fe142f;
-  display: block;
-  margin: 0 auto;
-  border-radius: 7px;
-  font-size: 1rem;
-  padding: 12px 82px;
-  color: #fff;
-  cursor: pointer;
-  border: 0;
-}
-/* custom select styles */
-.custom-select {
-  position: relative;
-  font-family: Arial;
-  font-size: 1.1rem;
-  font-weight: normal;
-}
-
-.custom-select select {
-  display: none;
-}
-.select-selected {
-  background-color: #fff;
-}
-
-/* Style the arrow inside the select element: */
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 10px;
-  right: 13px;
-  width: 11px;
-  height: 11px;
-  border: 3px solid transparent;
-  border-bottom-color: #f00;
-  border-left-color: #f00;
-  transform: rotate(-48deg);
-  border-radius: 5px 0 5px 0;
-}
-
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-  transform: rotate(135deg);
-  top: 13px;
-}
-
-.select-items div,
-.select-selected {
-  color: #000;
-  padding: 11px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-  border-radius: 8px;
-  height: 48px;
-}
-
-/* Style items (options): */
-.select-items {
-  position: absolute;
-  background-color: #fff;
-  top: 89%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none;
-}
-
-.select-items div:hover,
-.same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-/* custom select end */
-.text-label {
-  font-weight: normal;
-  font-size: 16px;
-}
-.hero-section {
-  min-height: 93vh;
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  overflow: hidden;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
-}
-.hero-content {
-  padding: 51px 67px;
-  grid-column: span 4;
-  background: #232323;
-  color: #fff;
-  position: relative;
-  text-align: left;
-  min-width: 424px;
-}
-.hero-content::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: #232323;
-  position: absolute;
-  right: -80px;
-  top: 0;
-}
-.hero-content > * {
-  position: relative;
-  z-index: 1;
-}
-.hero-headline {
-  font-size: 6rem;
-  font-weight: normal;
-  white-space: nowrap;
-}
-.hero-text {
-  width: 146%;
-  font-weight: normal;
-  margin-top: 57px;
-  padding: 0;
-}
-.btn-signup {
-  outline: none;
-  text-transform: capitalize;
-  font-size: 1.3rem;
-  padding: 15px 23px;
-  margin: 0;
-  margin-top: 59px;
-}
-.hero-img {
-  grid-column: span 8;
-}
-.hero-img img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  padding: 0;
-}
-.copyrights {
-  color: #fe142f;
-  padding: 0;
-  font-size: 1rem;
-  margin: 60px 0 30px;
-  font-weight: bolder;
-}
-.hero-section > .btn-signup {
-  display: none;
-}
-footer {
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 0 20px;
-}
-@media screen and (max-width: 800px) {
-  .hero-section {
-    display: block;
-    box-shadow: unset;
-  }
-  .hero-content {
-    background: #fff;
-    color: #000;
-    padding: 20px;
-  }
-  .hero-content::after {
-    content: unset;
-  }
-  .hero-content .btn-signup {
-    display: none;
-  }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
-  .hero-text {
-    width: unset;
-    font-size: 1.5rem;
-  }
-  .hero-img img {
-    border-radius: 10px;
-    margin-top: 40px;
-  }
-  .hero-section > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
-  }
-  .copyrights {
-    margin-top: 50px;
-    text-align: center;
-  }
+	.hero-section {
+		row-gap: 1.2rem;
+	}
+	.hero-headline {
+		font-size: 1.65rem;
+	}
+	.hero-text {
+		margin-top: 1.5rem;
+		font-size: 0.75rem;
+	}
+	.hero-section > .btn-signup {
+		margin-top: 1rem;
+		font-size: 0.9rem;
+	}
 }
 
 @keyframes modalopen {
-  from {
-    opacity: 0;
-    transform: translateY(-150px);
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+		transform: translateY(-150px);
+	}
+	to {
+		opacity: 1;
+	}
 }
-
