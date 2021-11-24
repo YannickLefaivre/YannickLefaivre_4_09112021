@@ -8,9 +8,9 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
+const modalbg = document.querySelector(".modal-background"); // Changed the modal background class name for one more explicit
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const formData = document.querySelectorAll(".form-data"); // Changed the modal form data class name for one more explicit
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
