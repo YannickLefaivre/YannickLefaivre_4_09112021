@@ -132,20 +132,33 @@ main {
 
 /* Removed unused class selector .smFont */
 
+.modal-enabled {
+	display: block;
+}
+
 .modal-background {
 	display: none;
-	position: fixed;
-	z-index: 1;
-	left: 0;
-	top: 0;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
 	height: 100%;
 	width: 100%;
+
+	z-index: 1;
+
 	overflow: auto;
+
 	background-color: rgba(26, 39, 156, 0.4);
 }
 
+.modal-enabled {
+	display: block;
+}
+
 .modal-content {
-	margin: 5% auto;
+	margin: 4rem auto;
 	width: 100%;
 	max-width: 500px;
 	animation-name: modalopen;
@@ -156,6 +169,7 @@ main {
 	position: relative;
 	color: #fff;
 	padding-top: 10px;
+	box-shadow: 0rem 0.9rem 1.5rem -0.68rem #404040;
 }
 
 .modal-body {
@@ -165,24 +179,32 @@ main {
 
 label {
 	font-family: var(--font-default);
-	font-size: 17px;
+	font-size: 15px;
 	font-weight: normal;
 	display: inline-block;
-	margin-bottom: 11px;
+	margin-bottom: 15px;
 }
+
 input {
 	padding: 8px;
 	border: 0.8px solid #ccc;
 	outline: none;
+	font-family: var(--font-slab);
 }
+
 .text-control {
 	margin: 0;
-	padding: 1.1rem;
+	padding: 0.2rem 1rem 1.2rem;
 	width: 100%;
 	border-radius: 8px;
-	font-size: 20px;
+	font-size: 1.2rem;
 	height: 3.5rem;
 }
+
+.form-data {
+	margin-bottom: 0.2rem;
+}
+
 .form-data[data-error]::after {
 	content: attr(data-error);
 	font-size: 0.4em;
@@ -202,6 +224,24 @@ input {
 	border: 2px solid #e54858;
 }
 
+.form-data-birthdate {
+	margin-bottom: 0.7rem;
+}
+
+.form-data-number-of-tournaments-attended {
+	margin-bottom: 0.8rem;
+}
+
+.form-data-tournament-location {
+	display: flex;
+	flex-flow: row wrap;
+	margin-bottom: 0;
+}
+
+.form-data-terms-conditions-and-newsletter {
+	margin-bottom: 1rem;
+}
+
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -209,81 +249,130 @@ input[data-error]::after {
     color: red;
 } */
 
-.checkbox-label,
+.radio-btn-group-label {
+	margin-bottom: 0.9rem;
+	font-weight: normal;
+	font-size: 15px;
+}
+
+.radio-btn-group {
+	display: flex;
+	flex-flow: row wrap;
+	gap: 0 1.5rem;
+}
+
+.radio-btn-label {
+	font-size: 0.7rem;
+	
+	display: flex;
+	
+	justify-content: space-between;
+	align-items: center;
+	gap: 0 0.4rem;
+	margin-bottom: 0.4rem;
+}
+
+.radio-btn-icon {
+	width: 24px;
+	height: 24px;
+
+	display: flex;
+
+	justify-content: center;
+	align-items: center;
+
+	border: 1px solid #279e7a;
+	border-radius: 50%;
+
+	transition: 0.3s;
+}
+
+.radio-btn-icon::after {
+	content: "";
+
+	display: block;
+
+	width: 16px;
+	height: 16px;
+
+	background-color: transparent;
+	border-radius: 50%;
+
+	opacity: 0;
+	transition: 0.3s;
+}
+
 .checkbox-label {
 	position: relative;
-	margin-left: 36px;
-	font-size: 12px;
+	margin-left: 33px;
+	margin-bottom: 0.3rem;
+	font-size: 0.72rem;
 	font-weight: normal;
 }
-.checkbox-label .checkbox-icon,
+
 .checkbox-label .checkbox-icon {
 	display: block;
-	width: 20px;
-	height: 20px;
-	border: 2px solid #279e7a;
-	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+
+	/* Changed the values ​​of the border-radius and border properties that were previously used to style radio buttons */
+
+	border-radius: 0.4rem; /* Correction of the border-radius of the checkbox to correspond to its rendering on the mockup */
+	border: 0;
+	background: #c4c4c4;
 	text-indent: 29px;
 	white-space: nowrap;
 	position: absolute;
-	left: -30px;
-	top: -1px;
+	left: -33px;
+	top: -5px;
 	transition: 0.3s;
 }
-.checkbox-label .checkbox-icon::after,
-.checkbox-label .checkbox-icon::after {
-	content: "";
-	width: 13px;
-	height: 13px;
-	background-color: #279e7a;
-	border-radius: 50%;
-	text-indent: 29px;
-	white-space: nowrap;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	transition: 0.3s;
-	opacity: 0;
-}
+
+/* Removed the rule that defines the style of radio buttons because it was implemented with a new method */
+
 .checkbox-input {
 	display: none;
 }
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after {
-	opacity: 1;
-}
-.checkbox-input:checked + .checkbox-label .checkbox-icon {
-	background: #279e7a;
-}
-.checkbox-label .checkbox-icon {
-	border-radius: 4px;
-	border: 0;
-	background: #c4c4c4;
-}
-.checkbox-label .checkbox-icon::after {
-	width: 7px;
-	height: 4px;
-	border-radius: 2px;
-	background: transparent;
-	border: 2px solid transparent;
-	border-bottom-color: #fff;
-	border-left-color: #fff;
-	transform: rotate(-55deg);
-	left: 21%;
-	top: 19%;
+
+.checkbox-input:checked + .checkbox-label .checkbox-icon, 
+.checkbox-input:checked + .radio-btn-label .checkbox-icon {
+	background-color: #279e7a;
 }
 
-/*  */
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after, 
+.checkbox-input:checked + .radio-btn-label .radio-btn-icon::after {
+	opacity: 1;
+	background: #279e7a;
+}
+
+/* Changed the value of height, left, top properties and scale() fonction to adjust the size and placement of the check mark */
+.checkbox-label .checkbox-icon::after {
+	content: "";
+	width: 7px;
+	height: 3px;
+	border-radius: 2px;
+	background: transparent;
+	border: 3px solid transparent;
+	border-bottom-color: #fff;
+	border-left-color: #fff;
+	transform: rotate(-50deg);
+	position: absolute;
+	left: 25%;
+	top: 23%;
+	opacity: 0;
+}
+
+
+/* Resizing and repositionning of the close button to place it and give him the same size as in the mockup */
 .modal-close-btn {
 	position: absolute;
-	right: 15px;
+	right: 14px;
 	top: 15px;
 	width: 32px;
 	height: 32px;
 	opacity: 1;
 	cursor: pointer;
-	transform: scale(0.7);
+	transform: scale(0.65);
 }
 .modal-close-btn:before,
 .modal-close-btn:after {
@@ -304,13 +393,17 @@ input[data-error]::after {
 .btn-signup {
 	background: #fe142f;
 	display: block;
-	margin: 0 auto;
+	margin: 1rem auto 0;
 	border-radius: 7px;
 	font-size: 1rem;
 	padding: 12px 82px;
 	color: #fff;
 	cursor: pointer;
 	border: 0;
+}
+
+.btn-submit {
+	padding: 0.6rem 4rem;
 }
 
 /* custom select styles */
@@ -379,12 +472,7 @@ input[data-error]::after {
 .same-as-selected {
 	background-color: rgba(0, 0, 0, 0.1);
 }
-
 /* custom select end */
-.radio-btn-group-label {
-	font-weight: normal;
-	font-size: 16px;
-}
 
 .hero-section {
 	min-height: 33rem; /* Changed the value of min-height so that the hero can get as close as possible to the height he has on the model on small computer (laptops) */
@@ -482,21 +570,48 @@ footer {
 
 /* --- Correction of PC layout --- */
 
-/* Ajust the size of the hero on full HD (4k) device in landscape orientation */
-@media screen and (max-width: 1080px) {
-	/* Main content */
-
-	.hero-section {
-		max-height: 34rem;
-	}
-}
-
 @media screen and (max-width: 1150px) {
 	/* Main content */
 
 	main {
 		font-size: 118%;
 	}
+
+	/* Modal form */
+
+	.radio-btn-label {
+		font-size: 0.72rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.radio-btn-icon {
+		width: 20px;
+		height: 20px;
+	}
+
+	.radio-btn-icon::after {
+		width: 14px;
+		height: 14px;
+	}
+
+	.checkbox-label {
+		margin-bottom: 0.2rem;
+		margin-left: 27px;
+	}
+	
+	.checkbox-label .checkbox-icon {
+		width: 20px;
+		height: 20px;
+		left: -27px;
+		top: -3px;
+	}
+
+	.checkbox-label .checkbox-icon::after {
+		border-width: 2px;
+	}
+
+	/* Hero section */
+
 	.hero-content::after {
 		right: -11px;
 	}
@@ -532,6 +647,15 @@ footer {
 @media screen and (max-width: 1090px) {
 	.topnav a {
 		font-size: 17px;
+	}
+}
+
+/* Ajust the size of the hero on full HD (4k) device in landscape orientation */
+@media screen and (max-width: 1080px) {
+	/* Main content */
+
+	.hero-section {
+		max-height: 34rem;
 	}
 }
 
@@ -604,13 +728,17 @@ footer {
 
 	main {
 		padding: 0;
-		margin: 0 8%; /* Aligning the main content margin with other sections of the application */
+		margin: 0;
+
 		font-size: 113%;
 	}
 
 	.hero-section {
+		margin: 0 8%; /* Aligning the main content margin with other sections of the application */
+
 		min-height: unset;
 		max-height: unset;
+
 		box-shadow: 0px 10px 8px 0px rgba(0, 0, 0, 0.2);
 	}
 	.hero-text {
@@ -624,25 +752,82 @@ footer {
 /* Adaptation of the landing page element on mobile and tablette */
 
 @media screen and (max-width: 999px) {
-	/* Header */
+	/* - Header - */
 
-	.header-logo img {
-		height: 30px;
-	}
 	.topnav a {
 		font-size: 20px;
 	}
+
 	.topnav a.icon {
 		font-size: 1.9rem;
 	}
 
-	/* Main content */
+	.header-logo img {
+		height: 30px;
+	}
+	
+	.header-logo-modal-active > img {
+		height: 23px;
+	}
+	
+	.main-navbar-modal-active a:last-of-type {
+		font-size: 1.4rem;
+	}
+
+	/*  - Main content - */
+
+
+	/* Modal form */
+
+	label {
+		margin-bottom: 15px;
+
+		font-size: 17px;
+	}
+
+	.text-control {
+		padding: 1.2rem;
+		
+		font-size: 1.3rem;
+	}
+
+	.form-data {
+		margin-bottom: 0.35rem;
+	}
+
+	.form-data-birthdate {
+		margin-bottom: 0.7rem;
+	}
+
+	.form-data-number-of-tournaments-attended {
+		margin-bottom: 0.5rem;
+	}
+
+	.form-data-tournament-location {
+		margin-bottom: unset;
+	}
+
+	.form-data-terms-conditions-and-newsletter {
+		margin-bottom: 0.5rem;
+	}
+
+	.radio-btn-group-label {
+		font-size: 16px;
+	}
+
+	.radio-btn-group {
+		gap: 0 0.7rem;
+	}
+
+
+	/* Hero */
 
 	.hero-section {
 		row-gap: 1.5rem;
 		justify-items: center;
 		box-shadow: unset;
 	}
+
 	.hero-content {
 		width: 100%;
 		grid-column: 1/-1;
@@ -656,24 +841,37 @@ footer {
 		min-height: unset;
 		max-height: unset;
 	}
+
 	.hero-content::after {
 		content: unset;
 	}
+	
 	.hero-content .btn-signup {
 		display: none;
 	}
+	
+	.hero-section > .btn-signup {
+		grid-column: 1/-1;
+		grid-row: 3;
+		display: block;
+		margin-top: 1.5rem;
+		padding: 0.5rem 2.5rem;
+	}
+
 	.hero-headline {
 		font-weight: bolder;
 		font-size: 4rem;
 		text-transform: capitalize;
 		white-space: normal;
 	}
+
 	.hero-text {
 		width: unset;
 		padding: 0;
 		margin-top: 2rem;
 		font-size: 1.5rem;
 	}
+
 	.hero-img {
 		grid-column: 1/-1;
 		grid-row: 2;
@@ -716,20 +914,21 @@ footer {
 @media screen and (max-width: 599px) {
 	/* - Header - */
 
-	.header-logo img {
-		height: 20px;
+	.topnav {
+		grid-column: 1;
+		grid-row: 1;
 	}
 
 	.topnav a.icon {
 		font-size: 1.3rem;
 	}
 
+	.header-logo img {
+		height: 20px;
+	}
+
 
 	/* - Main content - */
-
-	.main-content-modal-active {
-		margin: 0;
-	}
 
 	/* Modal form */
 	
@@ -738,63 +937,8 @@ footer {
 		margin-bottom: 0.5rem;
 	}
 
-	.modal-background {
-		position: unset;
-		overflow: visible;
-		background-color: initial;
-	}
-
-	.modal-content {
-		margin: 6rem auto;
-		border-radius: 10px 10px 0 0;
-	}
-
-	.form-data {
-		margin-bottom: 0.35rem;
-	}
-
-	.form-data-birthdate {
-		margin-bottom: 0.7rem;
-	}
-
-	.form-data-number-of-tournaments-attended {
-		margin-bottom: 0.5rem;
-	}
-
-	.form-data-terms-conditions-and-newsletter {
-		margin-bottom: 0.5rem;
-	}
-
 	.radio-btn-group-label {
 		font-size: 1rem;
-		margin-bottom: 0.2rem;
-	}
-
-	.checkbox-label .checkbox-icon, 
-	.checkbox-label .checkbox-icon {
-		width: 1.55rem;
-		height: 1.55rem;
-
-		display: flex;
-
-		justify-content: center;
-		align-items: center;
-
-		border: 1px solid #279e7a;
-		border-radius: 50%;
-
-		cursor: pointer;
-	}
-
-	.checkbox-icon::after {
-		content: "";
-
-		width: 75%;
-		height: 75%;
-	}
-
-	.checkbox-icon:hover::after {
-		opacity: 1;
 	}
 
 	/* Hero section */
@@ -802,24 +946,102 @@ footer {
 	.hero-img {
 		width: 100%;
 	}
+
 	.hero-headline {
 		font-size: 2.1rem;
 	}
+
 	.hero-text {
 		font-size: 1rem;
 	}
 }
 
 @media screen and (max-width: 500px) {
+	/* Top level HTML element */
 
-	/* Main content */
-	
+	.body-modal-active {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+
+	/* - Main content - */
+
+	.main-content-modal-active {
+		grid-column: 1;
+		grid-row: 2;
+
+		display: grid;
+		grid-template-columns: 1fr;
+		margin: 0;
+	}
+
+	/* Modal form */
+
+	.modal-background {
+		grid-column: 1;
+		grid-row: 1;
+
+		position: unset;
+		overflow: visible;
+		background-color: initial;
+	}
+
+	.modal-content {
+		margin: 0;
+		
+		box-shadow: none;
+
+		border-radius: 10px 10px 0 0;
+	}
+
+	.checkbox-label {
+		margin-left: 27px;
+	}
+
+	.checkbox-label .checkbox-icon {
+		left: -27px;
+		top: -2px;
+	}
+
+	/* Hero section */
+
 	.hero-section {
 		row-gap: 1.3rem;
 	}
+	.hero-section-modal-active {
+		grid-column: 1;
+		grid-row: 1;
+	}
+	
 	.hero-text {
 		margin-top: 1.5rem;
 		font-size: 0.8rem;
+	}
+
+
+	/* - Footer - */
+	
+	.footer-modal-active {
+		grid-column: 1;
+		grid-row: 2;
+	}
+}
+
+@media screen and (max-width: 400px) and (max-height: 800px) {
+	/* Main content */
+
+	/* Modal form */
+	.checkbox-label {
+		margin-bottom: 0.8rem;
+	}
+}
+
+@media screen and (max-width: 390px) and (max-height: 700px) {
+	/* Main content */
+
+	/* Modal form */
+	.checkbox-label {
+		margin-bottom: 0.2rem;
 	}
 }
 
@@ -831,6 +1053,14 @@ footer {
 	}
 
 	/* Main content */
+
+	/* Modal form */
+
+	.radio-btn-group {
+		margin-bottom: 0.6rem;
+	}
+
+	/* Hero section */
 
 	.hero-section {
 		row-gap: 1.2rem;

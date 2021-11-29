@@ -1,13 +1,19 @@
 <!-- Correction of code indentation for better readability -->
 
 <!DOCTYPE html>
-<html lang="fr"> <!-- Changed the lang attribute which was defined on "en" (English) for "fr" (French) because the text of the site is written in French not in English -->
+
+<!-- Changed the lang attribute which was defined on "en" (English) for "fr" (French) because the text of the site is written in French not in English -->
+<html lang="fr">
 	<head>
 		<meta charset="utf-8" />
-		<title>Réservation</title> <!-- Addition of the acute accent of the "e" of the word "Reservation" -->
+
+		<!-- Addition of the acute accent of the "e" of the word "Reservation" -->
+		<title>Réservation</title>
+
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 
-		<link rel="stylesheet" href="./public/css/modal.css" /> <!-- Fixed stylesheet file path to reflect change in repository folder structure -->
+		<!-- Fixed stylesheet file path to reflect change in repository folder structure -->
+		<link rel="stylesheet" href="./public/css/modal.css" />
 
 		<link
 			rel="stylesheet"
@@ -20,19 +26,20 @@
 		/>
 	</head>
 
-	<body>
+	<body id="body">
 		<!-- Addition of HTML5 semantics tag to the application structure -->
 
 		<header class="topnav" id="myTopnav">
 			<div class="header-logo">
-				<img alt="logo" src="./pictures/Logo.png" /> <!-- Fixed the company logo file path to reflect the change in the repository folder structure. Removed wrong value (auto) assign to element width and height attributes -->
+				<!-- Fixed the company logo file path to reflect the change in the repository folder structure. Removed wrong value (auto) assign to element width and height attributes -->
+				<img alt="logo" src="./pictures/Logo.png" />
 			</div>
 
 			<nav class="main-navbar">
-
 				<!-- Removal of the link who redirect to the home page because this one it not present on the mockup -->
 
-				<a href="#" class="active">Détails de l'évènement</a> <!-- Add of active class for this link been styled like on the mockup : with a red background and a little bevel on the edge -->
+				<!-- Add of active class for this link been styled like on the mockup : with a red background and a little bevel on the edge -->
+				<a href="#" class="active">Détails de l'évènement</a>
 				<a href="#"><span>À propos</span></a>
 				<a href="#"><span>Contact</span></a>
 				<a href="#"><span>Évènements passés</span></a>
@@ -43,7 +50,9 @@
 			<!-- Removal of the stray end tag "div" -->
 		</header>
 
-		<main>
+		<!-- Addition of .main and .footer class to main and footer section for use it in JavaScript to reajust their placement in the body tag when the modal is active -->
+
+		<main class="main">
 			<section class="hero-section">
 				<div class="hero-content">
 					<h1 class="hero-headline">
@@ -60,19 +69,19 @@
 				</div>
 
 				<div class="hero-img">
-					<img src="./pictures/bg_img.jpg" alt="img" /> <!-- Fixed the main content background image file path to reflect change in repository folder structure -->
+					<!-- Fixed the main content background image file path to reflect change in repository folder structure -->
+					<img src="./pictures/bg_img.jpg" alt="img" />
 				</div>
 
 				<button class="btn-signup modal-btn">je m'inscris</button>
 			</section>
 
 			<!-- Addition of more explicit class name for the div serving respectively as background and wrapper / container to the modal, as well as for its close button -->
-			<div class="modal-background">
+			<aside class="modal-background">
 				<div class="modal-content">
 					<span class="modal-close-btn"></span>
 
 					<div class="modal-body">
-
 						<!-- Modification of the method of sending the form to "POST" because the information which is present there needs to be sent with it and processed by the server  -->
 						<form
 							name="reserve"
@@ -80,7 +89,6 @@
 							method="POST"
 							onsubmit="return validate();"
 						>
-
 							<!--
 								1. Removal of unnecessary <br/> tags because newline is handled otherwise via CSS;
 
@@ -107,7 +115,12 @@
 
 							<div class="form-data">
 								<label for="last-name">Nom</label>
-								<input class="text-control" type="text" id="last-name" name="last-name" />
+								<input
+									class="text-control"
+									type="text"
+									id="last-name"
+									name="last-name"
+								/>
 							</div>
 
 							<div class="form-data">
@@ -122,16 +135,20 @@
 
 							<div class="form-data form-data-birthdate">
 								<label for="birthdate">Date de naissance</label>
+
+								<!-- Change of the input type of the date of birth field in order to prevent the default style of the "date" type from making it deferred from the rendering of the mockup -->
 								<input
 									class="text-control"
 									type="text"
 									id="birthdate"
 									name="birthdate"
-								/> <!-- Change of the input type of the date of birth field in order to prevent the default style of the "date" type from making it deferred from the rendering of the mockup -->
+								/>
 							</div>
 
 							<div class="form-data form-data-number-of-tournaments-attended">
-								<label for="number-of-tournaments">À combien de tournois GameOn avez-vous déjà participé ?</label>
+								<label for="number-of-tournaments">
+									À combien de tournois GameOn avez-vous déjà participé ?
+								</label>
 								<input
 									type="number"
 									class="text-control"
@@ -142,80 +159,83 @@
 								/>
 							</div>
 
-							<div class="form-data">
-								<p class="radio-btn-group-label">Quelle ville ?</p> <!-- Corrected the translation of the phrase "Which location?" and inclusion of the paragraph used as the label for the radio buttons. Also see the comment #4 -->
+							<div class="form-data form-data-tournament-location">
+								<!-- Corrected the translation of the phrase "Which location?" and inclusion of the paragraph used as the label for the radio buttons. Also see the comment #4 -->
+								<p class="radio-btn-group-label">Quelle ville ?</p>
 
-								<input
-									class="checkbox-input"
-									type="radio"
-									id="tournament-location-1"
-									name="tournament-location"
-									value="New York"
-								/>
-								<label class="checkbox-label" for="tournament-location-1">
-									<span class="checkbox-icon btn-radio-icon"></span>
-									New York</label
-								>
+								<div class="radio-btn-group">
+									<input
+										class="checkbox-input"
+										type="radio"
+										id="tournament-location-1"
+										name="tournament-location"
+										value="New York"
+									/>
+									<label class="radio-btn-label" for="tournament-location-1">
+										<span class="radio-btn-icon"></span>
+										New York
+									</label>
 
-								<input
-									class="checkbox-input"
-									type="radio"
-									id="tournament-location-2"
-									name="tournament-location"
-									value="San Francisco"
-								/>
-								<label class="checkbox-label" for="tournament-location-2">
-									<span class="checkbox-icon btn-radio-icon"></span>
-									San Francisco</label
-								>
+									<input
+										class="checkbox-input"
+										type="radio"
+										id="tournament-location-2"
+										name="tournament-location"
+										value="San Francisco"
+									/>
+									<label class="radio-btn-label" for="tournament-location-2">
+										<span class="radio-btn-icon"></span>
+										San Francisco
+									</label>
 
-								<input
-									class="checkbox-input"
-									type="radio"
-									id="tournament-location-3"
-									name="tournament-location"
-									value="Seattle"
-								/>
-								<label class="checkbox-label" for="tournament-location-3">
-									<span class="checkbox-icon btn-radio-icon"></span>
-									Seattle</label
-								>
+									<input
+										class="checkbox-input"
+										type="radio"
+										id="tournament-location-3"
+										name="tournament-location"
+										value="Seattle"
+									/>
+									<label class="radio-btn-label" for="tournament-location-3">
+										<span class="radio-btn-icon"></span>
+										Seattle
+									</label>
 
-								<input
-									class="checkbox-input"
-									type="radio"
-									id="tournament-location-4"
-									name="tournament-location"
-									value="Chicago"
-								/>
-								<label class="checkbox-label" for="tournament-location-4">
-									<span class="checkbox-icon btn-radio-icon"></span>
-									Chicago</label
-								>
+									<input
+										class="checkbox-input"
+										type="radio"
+										id="tournament-location-4"
+										name="tournament-location"
+										value="Chicago"
+									/>
+									<label class="radio-btn-label" for="tournament-location-4">
+										<span class="radio-btn-icon"></span>
+										Chicago
+									</label>
 
-								<input
-									class="checkbox-input"
-									type="radio"
-									id="tournament-location-5"
-									name="tournament-location"
-									value="Boston"
-								/>
-								<label class="checkbox-label" for="tournament-location-5">
-									<span class="checkbox-icon btn-radio-icon"></span>
-									Boston</label
-								>
+									<input
+										class="checkbox-input"
+										type="radio"
+										id="tournament-location-5"
+										name="tournament-location"
+										value="Boston"
+									/>
+									<label class="radio-btn-label" for="tournament-location-5">
+										<span class="radio-btn-icon"></span>
+										Boston
+									</label>
 
-								<input
-									class="checkbox-input"
-									type="radio"
-									id="tournament-location-6"
-									name="tournament-location"
-									value="Portland"
-								/>
-								<label class="checkbox-label" for="tournament-location-6">
-									<span class="checkbox-icon btn-radio-icon"></span>
-									Portland</label
-								>
+									<input
+										class="checkbox-input"
+										type="radio"
+										id="tournament-location-6"
+										name="tournament-location"
+										value="Portland"
+									/>
+									<label class="radio-btn-label" for="tournament-location-6">
+										<span class="radio-btn-icon"></span>
+										Portland
+									</label>
+								</div>
 							</div>
 
 							<div class="form-data form-data-terms-conditions-and-newsletter">
@@ -225,13 +245,22 @@
 									id="checkbox-terms-and-conditions"
 									checked
 								/>
-								<label class="checkbox-label" for="checkbox-terms-and-conditions"> <!-- Removal of not allowed attribut "required" on this label -->
+
+								<!-- Removal of not allowed attribut "required" on this label -->
+								<label
+									class="checkbox-label"
+									for="checkbox-terms-and-conditions"
+								>
 									<span class="checkbox-icon"></span>
 									J'ai lu et accepté les conditions d'utilisation.
 								</label>
 
 								<!-- Removal of duplicate word "Je Je" for the checkbox label text content -->
-								<input class="checkbox-input" type="checkbox" id="checkbox-newsletter" />
+								<input
+									class="checkbox-input"
+									type="checkbox"
+									id="checkbox-newsletter"
+								/>
 								<label class="checkbox-label" for="checkbox-newsletter">
 									<span class="checkbox-icon"></span>
 									Je souhaite être prévenu des prochains évènements.
@@ -242,17 +271,19 @@
 								class="button btn-submit"
 								type="submit"
 								value="C'est parti"
-							/> <!-- Removal of duplicate attribut class -->
+							/>
+							<!-- Removal of duplicate attribut class -->
 						</form>
 					</div>
 				</div>
-			</div>
+			</aside>
 		</main>
 
-		<footer>
+		<footer class="footer">
 			<p class="copyrights">Copyright 2014 - 2020, GameOn Inc.</p>
 		</footer>
 
-		<script src="./src/modal.js"></script> <!-- Correction of the script file path to reflect the precedent change occured in the root directory structure -->
+		<!-- Correction of the script file path to reflect the precedent change occured in the root directory structure -->
+		<script src="./src/modal.js"></script>
 	</body>
 </html>
