@@ -366,13 +366,13 @@ input[data-error]::after {
 /* Resizing and repositionning of the close button to place it and give him the same size as in the mockup */
 .modal-close-btn {
 	position: absolute;
-	right: 14px;
-	top: 15px;
+	right: 20px;
+	top: 18px;
 	width: 32px;
 	height: 32px;
 	opacity: 1;
 	cursor: pointer;
-	transform: scale(0.65);
+	transform: scale(0.75);
 }
 .modal-close-btn:before,
 .modal-close-btn:after {
@@ -774,8 +774,8 @@ footer {
 		font-size: 1.4rem;
 	}
 
-	/*  - Main content - */
 
+	/*  - Main content - */
 
 	/* Modal form */
 
@@ -783,6 +783,12 @@ footer {
 		margin-bottom: 15px;
 
 		font-size: 17px;
+	}
+
+	.modal-close-btn {
+		top: 15px;
+
+		transform: scale(0.65);
 	}
 
 	.text-control {
@@ -818,7 +824,6 @@ footer {
 	.radio-btn-group {
 		gap: 0 0.7rem;
 	}
-
 
 	/* Hero */
 
@@ -881,9 +886,11 @@ footer {
 		min-height: unset;
 		max-height: unset;
 	}
+
 	.hero-img img {
 		border-radius: 10px;
 	}
+
 	.hero-section > .btn-signup {
 		grid-column: 1/-1;
 		grid-row: 3;
@@ -891,6 +898,10 @@ footer {
 		margin-top: 1.5rem;
 		padding: 0.5rem 2.5rem;
 	}
+
+
+	/* - Footer - */
+
 	.copyrights {
 		margin-top: 50px;
 		text-align: center;
@@ -899,6 +910,8 @@ footer {
 
 @media screen and (max-width: 700px) {
 	/* - Main content - */
+
+	/* Hero section */
 
 	.hero-headline {
 		font-size: 3rem;
@@ -909,6 +922,17 @@ footer {
 	.hero-img {
 		width: 100%;
 	}
+}
+
+@media screen and (max-width: 699px) {
+	/* - Main content - */
+
+	/* Modal form */
+
+	.modal-close-btn {
+		right: 14px;
+	}
+	
 }
 
 @media screen and (max-width: 599px) {
