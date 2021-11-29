@@ -139,9 +139,9 @@ main {
 .modal-background {
 	display: none;
 
-    position: fixed;
-    left: 0;
-    top: 0;
+	position: fixed;
+	left: 0;
+	top: 0;
 
 	height: 100%;
 	width: 100%;
@@ -263,9 +263,9 @@ input[data-error]::after {
 
 .radio-btn-label {
 	font-size: 0.7rem;
-	
+
 	display: flex;
-	
+
 	justify-content: space-between;
 	align-items: center;
 	gap: 0 0.4rem;
@@ -334,12 +334,12 @@ input[data-error]::after {
 	display: none;
 }
 
-.checkbox-input:checked + .checkbox-label .checkbox-icon, 
+.checkbox-input:checked + .checkbox-label .checkbox-icon,
 .checkbox-input:checked + .radio-btn-label .checkbox-icon {
 	background-color: #279e7a;
 }
 
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after, 
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .radio-btn-label .radio-btn-icon::after {
 	opacity: 1;
 	background: #279e7a;
@@ -361,7 +361,6 @@ input[data-error]::after {
 	top: 23%;
 	opacity: 0;
 }
-
 
 /* Resizing and repositionning of the close button to place it and give him the same size as in the mockup */
 .modal-close-btn {
@@ -554,21 +553,36 @@ input[data-error]::after {
 
 /* - Footer - */
 
-footer {
-	padding-left: 2vw;
-	padding-right: 2vw;
-	margin: 0 20px;
-}
-
 .copyrights {
-	color: #fe142f;
+	margin: 3rem 0 4rem;
 	padding: 0;
+
+	color: #fe142f;
+
 	font-size: 1rem;
-	margin: 60px 0 30px;
 	font-weight: bolder;
 }
 
 /* --- Correction of PC layout --- */
+
+@media screen and (max-width: 1300px) {
+	/* - Footer - */
+
+	.footer {
+		padding: 0 2vw;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	/* - Main content - */
+
+	/* Hero section */
+
+	.hero-content::after {
+		height: 99.5%;
+		top: 1px;
+	}
+}
 
 @media screen and (max-width: 1150px) {
 	/* Main content */
@@ -598,7 +612,7 @@ footer {
 		margin-bottom: 0.2rem;
 		margin-left: 27px;
 	}
-	
+
 	.checkbox-label .checkbox-icon {
 		width: 20px;
 		height: 20px;
@@ -615,32 +629,44 @@ footer {
 	.hero-content::after {
 		right: -11px;
 	}
+
 	.hero-headline {
 		font-size: 4.5rem;
 	}
+
 	.hero-text {
 		margin-top: 59px;
 	}
 }
 
 @media screen and (max-width: 1129px) {
-	/* Header */
+	/* - Header - */
 
 	.topnav {
 		margin: 3rem;
 	}
 
-	/* Main content */
+	/* - Main content - */
 
 	main {
 		font-size: 113%;
 	}
+
+	/* Hero section */
+
 	.hero-content::after {
 		right: -5px;
 		top: 1px;
 	}
+
 	.hero-headline {
 		font-size: 4rem;
+	}
+
+	/* - Footer - */
+
+	.copyrights {
+		font-size: 0.9rem;
 	}
 }
 
@@ -765,17 +791,16 @@ footer {
 	.header-logo img {
 		height: 30px;
 	}
-	
+
 	.header-logo-modal-active > img {
 		height: 23px;
 	}
-	
+
 	.main-navbar-modal-active a:last-of-type {
 		font-size: 1.4rem;
 	}
 
 	/*  - Main content - */
-
 
 	/* Modal form */
 
@@ -787,7 +812,7 @@ footer {
 
 	.text-control {
 		padding: 1.2rem;
-		
+
 		font-size: 1.3rem;
 	}
 
@@ -819,7 +844,6 @@ footer {
 		gap: 0 0.7rem;
 	}
 
-
 	/* Hero */
 
 	.hero-section {
@@ -845,11 +869,11 @@ footer {
 	.hero-content::after {
 		content: unset;
 	}
-	
+
 	.hero-content .btn-signup {
 		display: none;
 	}
-	
+
 	.hero-section > .btn-signup {
 		grid-column: 1/-1;
 		grid-row: 3;
@@ -891,8 +915,16 @@ footer {
 		margin-top: 1.5rem;
 		padding: 0.5rem 2.5rem;
 	}
+
+	/* - Footer - */
+
+	.footer {
+		margin: 0 auto;
+	}
+
 	.copyrights {
-		margin-top: 50px;
+		margin: 39px 0 40px;
+		
 		text-align: center;
 	}
 }
@@ -927,11 +959,10 @@ footer {
 		height: 20px;
 	}
 
-
 	/* - Main content - */
 
 	/* Modal form */
-	
+
 	label {
 		font-size: 1rem;
 		margin-bottom: 0.5rem;
@@ -953,6 +984,12 @@ footer {
 
 	.hero-text {
 		font-size: 1rem;
+	}
+
+	/* - Footer - */
+
+	.copyrights {
+		font-size: 0.8rem;
 	}
 }
 
@@ -988,7 +1025,7 @@ footer {
 
 	.modal-content {
 		margin: 0;
-		
+
 		box-shadow: none;
 
 		border-radius: 10px 10px 0 0;
@@ -1012,15 +1049,14 @@ footer {
 		grid-column: 1;
 		grid-row: 1;
 	}
-	
+
 	.hero-text {
 		margin-top: 1.5rem;
 		font-size: 0.8rem;
 	}
 
-
 	/* - Footer - */
-	
+
 	.footer-modal-active {
 		grid-column: 1;
 		grid-row: 2;
@@ -1065,16 +1101,26 @@ footer {
 	.hero-section {
 		row-gap: 1.2rem;
 	}
+
 	.hero-headline {
 		font-size: 1.65rem;
 	}
+
 	.hero-text {
 		margin-top: 1.5rem;
 		font-size: 0.75rem;
 	}
+
 	.hero-section > .btn-signup {
 		margin-top: 1rem;
 		font-size: 0.9rem;
+	}
+
+	/* - Footer - */
+
+	.copyrights {
+		margin-top: 28px;
+		font-size: 0.6rem;
 	}
 }
 
