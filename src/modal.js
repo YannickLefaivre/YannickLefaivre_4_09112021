@@ -9,7 +9,7 @@ function editNav() {
   }
 }
 
-//Top level DOM elements
+//Sectionning root DOM elements
 const body = document.getElementById("body");
 
 // Header DOM Elements
