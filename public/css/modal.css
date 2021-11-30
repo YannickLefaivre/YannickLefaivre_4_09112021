@@ -32,6 +32,10 @@ body {
 	margin: 0 auto;
 }
 
+li {
+	list-style-type: none;
+}
+
 /* Removed unnecessary declaration to style all <p> elements */
 
 /* Removal of the padding-right of img element because it doesn't affect the layout */
@@ -48,7 +52,18 @@ body {
 .main-navbar {
 	float: right;
 }
-.topnav a {
+
+.topnav .main-navbar-icon {
+	display: none;
+	
+	border: none;
+	background-color: transparent;
+
+	cursor: pointer;
+}
+
+.topnav a,
+.main-navbar-icon {
 	float: left;
 	display: block;
 	color: #000000;
@@ -60,7 +75,8 @@ body {
 	font-family: Roboto, sans-serif;
 }
 
-.topnav a:hover {
+.topnav a:hover,
+.main-navbar-icon:hover {
 	background-color: #ff0000;
 	color: #ffffff;
 	border-radius: 15px;
@@ -74,10 +90,6 @@ body {
 	/* Addition of the same underline as on the mockup */
 	text-decoration: underline;
 	text-underline-position: under;
-}
-
-.topnav .icon {
-	display: none;
 }
 
 /* - Main content - */
@@ -94,7 +106,7 @@ main {
 	/* Removal of justifying text alignment which is not necessary as it is reset to "left" for hero-content text */
 }
 
-/* Removal of the display: none; declaration of the hamburger menu icon on tablet so that it is displayed on this device  */
+/* Removal of the display: none; declaration of the hamburger menu main-navbar-icon on tablet so that it is displayed on this device  */
 
 .modal-btn {
 	font-size: 145%;
@@ -716,9 +728,11 @@ input[data-error]::after {
 	}
 
 	.main-navbar {
-		float: none; /* 2 */
-		grid-row: 1; /* 1 */
 		grid-column: 1/-1; /* 1 */
+		grid-row: 2; /* 1 */
+		
+		float: none; /* 2 */
+
 		display: grid;
 		grid-template-columns: 1fr;
 	}
@@ -728,17 +742,20 @@ input[data-error]::after {
 		font-size: 25px;
 	}
 
-	.topnav .icon:hover {
+	.topnav .main-navbar-icon:hover {
 		color: #fff;
 	}
 
-	.topnav a.icon {
+	.topnav .main-navbar-icon {
+		grid-column: -1;
+		grid-row: 1;
+
 		float: none; /* 2 */
 		display: block;
 		color: #f00;
 		font-size: 2.1rem;
 
-		/* Removed the top margin of the hamburger menu icon because its margin from the top of the web page is now managed with the margin of its container (.topnav) */
+		/* Removed the top margin of the hamburger menu main-navbar-icon because its margin from the top of the web page is now managed with the margin of its container (.topnav) */
 
 		order: -1; /* This property places the hamburger menu button at the top of the navigation links list in the main-navbar column */
 		justify-self: flex-end;
@@ -750,7 +767,7 @@ input[data-error]::after {
 		grid-column: -1;
 	}
 
-	/* Main content */
+	/* - Main content - */
 
 	main {
 		padding: 0;
@@ -784,7 +801,7 @@ input[data-error]::after {
 		font-size: 20px;
 	}
 
-	.topnav a.icon {
+	.topnav .main-navbar-icon {
 		font-size: 1.9rem;
 	}
 
@@ -973,7 +990,7 @@ input[data-error]::after {
 		grid-row: 1;
 	}
 
-	.topnav a.icon {
+	.topnav .main-navbar-icon {
 		font-size: 1.3rem;
 	}
 

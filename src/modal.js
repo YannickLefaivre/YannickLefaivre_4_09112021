@@ -1,5 +1,6 @@
 // Changed the name of variables for its to be more explicit
 
+// Fait apparaître la barre de navigation sur mobile lorsque l'utilisateur clique sur le bouton hamburger
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -9,7 +10,7 @@ function editNav() {
   }
 }
 
-//Top level DOM elements
+// Sectionning root DOM elements
 const body = document.getElementById("body");
 
 // Header DOM Elements
@@ -23,13 +24,17 @@ const heroSection = document.querySelector(".hero-section");
 // Modal form DOM elements
 const modalBackground = document.querySelector(".modal-background");
 const modalButton = document.querySelectorAll(".modal-btn");
+const modalCloseButton = document.querySelector(".modal-close-btn");
 const formData = document.querySelectorAll(".form-data");
 
 // Footer DOM elements
 const footer = document.querySelector(".footer");
 
-// launch modal event
+// Launch modal event
 modalButton.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// Close modal event
+modalCloseButton.addEventListener("click", closeModal);
 
 // Affiche un message d'erreur informant de l'absence d'une classe au sein de la liste de classe d'un élément 
 function logAnAddClassError(missinClassName, tagName, firstClassName) {
@@ -126,4 +131,9 @@ function launchModal() {
   hideHeroSection();
 
   hideFooter();
+}
+
+// Close the modal form when user click on it
+function closeModal() {
+  modalBackground.classList.remove("modal-enabled");
 }
