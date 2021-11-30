@@ -45,12 +45,12 @@ li {
 .topnav {
 	/* I removed the overflow: hidden; declaration to make the overflow visible to prevent the cut of the red background of the hamburger menu */
 	margin: 3rem; /* Aligning the header margin with other sections of the application */
+	display: flex;
+	justify-content: space-between;
 }
-.header-logo {
-	float: left;
-}
-.main-navbar {
-	float: right;
+
+.topnav ul {
+	display: flex;
 }
 
 .topnav .main-navbar-icon {
@@ -64,7 +64,6 @@ li {
 
 .topnav a,
 .main-navbar-icon {
-	float: left;
 	display: block;
 	color: #000000;
 	text-align: center;
@@ -79,18 +78,25 @@ li {
 .main-navbar-icon:hover {
 	background-color: #ff0000;
 	color: #ffffff;
-	border-radius: 15px;
+	border-radius: 0.5rem;
 }
 
 .topnav a.active {
 	background-color: #ff0000;
 	color: #ffffff;
-	border-radius: 15px;
+	border-radius: 0.5rem;
 
 	/* Addition of the same underline as on the mockup */
 	text-decoration: underline;
 	text-underline-position: under;
 }
+
+.main-navbar {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
 
 /* - Main content - */
 
@@ -575,6 +581,14 @@ input[data-error]::after {
 	font-weight: bolder;
 }
 
+/* Correct pseudo-element position on 4k screen  */
+
+@media screen and (max-width: 1920px) {
+	.hero-content::after {
+		top: 0;
+	}
+}
+
 /* --- Correction of PC layout --- */
 
 @media screen and (max-width: 1300px) {
@@ -710,13 +724,8 @@ input[data-error]::after {
 @media screen and (max-width: 1023px) {
 	.topnav {
 		margin: 6% 8% 3.5%; /* Placement of the header element as in the mockup */
-
-		display: grid; /* 1 */
-		grid-template-columns: 5fr 1fr; /* 1 */
-		align-items: baseline; /* 1 */
 	}
 	.header-logo {
-		float: none; /* 2 */
 		grid-row: 1; /* 1 */
 		grid-column: 1; /* 1 */
 	}
@@ -728,18 +737,19 @@ input[data-error]::after {
 	}
 
 	.main-navbar {
-		grid-column: 1/-1; /* 1 */
-		grid-row: 2; /* 1 */
-		
-		float: none; /* 2 */
-
+		width: 100%;
+		position: relative;
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: repeat(2, 1fr);
+		align-items: center;
 	}
+
 	.topnav a {
-		display: none;
-		float: none; /* 2 */
 		font-size: 25px;
+	}
+
+	.main-navbar ul {
+		display: none;
 	}
 
 	.topnav .main-navbar-icon:hover {
@@ -763,8 +773,21 @@ input[data-error]::after {
 
 	.topnav.responsive a {
 		display: block;
+		color: #fff;
 		text-align: left;
 		grid-column: -1;
+	}
+	
+	.topnav.responsive ul {
+		grid-column: 1/-1;
+		grid-row: 2;
+		position: absolute;
+		top: 0;
+		right: -51px;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		background: rgba(200 0 0 / 70%);
 	}
 
 	/* - Main content - */
@@ -774,6 +797,10 @@ input[data-error]::after {
 		margin: 0;
 
 		font-size: 113%;
+	}
+
+	.topnav.responsive + main {
+		z-index: -1;
 	}
 
 	.hero-section {
