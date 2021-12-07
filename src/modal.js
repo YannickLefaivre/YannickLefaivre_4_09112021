@@ -215,13 +215,10 @@ function validate() {
 
   // Regex who can match only string with number in it and are nothing more than two
   var numberOfTournamentsPattern = /^\d{1,2}$/g;
-  
-  // the value returned when this function end to notify than the form was validate
-  var formIsValid = "false";
 
 
   // If the First name field does not have at least two characters and does not contain only letters or is empty then display an error message to warn the user that this field has not been validated.
-  if(!namePattern.test(firstNameInputValue) || firstNameInputValue.length === 0) {
+  if(!namePattern.test(firstNameInputValue) && firstNameInputValue.length === 0) {
 
     firstNameField.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.");
     firstNameField.setAttribute("data-error-visible", "true");
@@ -231,7 +228,7 @@ function validate() {
   }
 
   // If the Name field does not have at least two characters and does not contain only letters or is empty then display an error message to warn the user that this field has not been validated.
-  if(!namePattern.test(lastNameInputValue) || lastNameInputValue.length === 0) {
+  if(!namePattern.test(lastNameInputValue) && lastNameInputValue.length === 0) {
 
     lastNameField.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
     lastNameField.setAttribute("data-error-visible", "true");
@@ -241,7 +238,7 @@ function validate() {
   }
 
   // If the Email field does not respect the syntax of a valid email address according to the HTML Living Standard specification or is empty then display an error message to warn the user that this field has not been validated.
-  if(!emailPattern.test(emailInputValue) || emailInputValue.length === 0) {
+  if(!emailPattern.test(emailInputValue) && emailInputValue.length === 0) {
 
     emailField.setAttribute("data-error", "Vous devez entrer une adresse electronique valide.");
     emailField.setAttribute("data-error-visible", "true");
