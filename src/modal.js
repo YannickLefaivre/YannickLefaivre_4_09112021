@@ -223,12 +223,18 @@ function validate() {
   // If the First name field does not have at least two characters and does not contain only letters or is empty then display an error message to warn the user that this field has not been validated.
   if(!namePattern.test(firstNameInputValue) || firstNameInputValue.length === 0) {
 
+    firstNameField.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.");
+    firstNameField.setAttribute("data-error-visible", "true");
+
     return false;
 
   }
 
   // If the Name field does not have at least two characters and does not contain only letters or is empty then display an error message to warn the user that this field has not been validated.
   if(!namePattern.test(lastNameInputValue) || lastNameInputValue.length === 0) {
+
+    lastNameField.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+    lastNameField.setAttribute("data-error-visible", "true");
 
     return false;
 
@@ -237,12 +243,18 @@ function validate() {
   // If the Email field does not respect the syntax of a valid email address according to the HTML Living Standard specification or is empty then display an error message to warn the user that this field has not been validated.
   if(!emailPattern.test(emailInputValue) || emailInputValue.length === 0) {
 
+    emailField.setAttribute("data-error", "Vous devez entrer une adresse electronique valide.");
+    emailField.setAttribute("data-error-visible", "true");
+
     return false;
 
   }
 
   // If the Birthdate field is empty / has not been filled in, then display an error message to warn the user that this field has not been validated.
   if(birthdateInputValue.length === 0) {
+
+    birthdateField.setAttribute("data-error", "Vous devez entrer votre date de naissance.");
+    birthdateField.setAttribute("data-error-visible", "true");
     
     return false;
     
@@ -250,6 +262,9 @@ function validate() {
 
   // If the Number of tournaments field does not contain only numbers or is empty then display an error message to warn the user that this field has not been validated.
   if(!numberOfTournamentsPattern.test(numberOfTournamentsInputValue) && numberOfTournamentsInputValue.length === 0) {
+
+    numberOfTournamentsField.setAttribute("data-error", "Vous devez saisir une valeur numérique");
+    numberOfTournamentsField.setAttribute("data-error-visible", "true");
 
     return false;
 
@@ -269,12 +284,18 @@ function validate() {
   // If no location has been chosen then display an error message to warn the user that this set of fields has not been validated.
   if(!atLeastOneLocationIsChecked) {
 
+    tournamentLocationsFieldset.setAttribute("data-error", "Vous devez choisir une option.");
+    tournamentLocationsFieldset.setAttribute("data-error-visible", "true");
+
     return false;
 
   }
 
   // If the terms and conditions checkbox has not been checked then display an error message to warn the user that this field has not been validated.
   if(!document.getElementById("checkbox-terms-and-conditions").checked) {
+
+    termsConditionsAndNewsletterFieldset.setAttribute("data-error", "Vous devez vérifier que vous acceptez les termes et conditions.");
+    termsConditionsAndNewsletterFieldset.setAttribute("data-error-visible", "true");
 
     return false;
 
