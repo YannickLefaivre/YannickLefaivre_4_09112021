@@ -40,6 +40,13 @@ li {
 
 /* Removal of the padding-right of img element because it doesn't affect the layout */
 
+
+/* - Sectionning Root-  */
+
+.body-modal-active {
+	overflow: hidden;
+}
+
 /* - Header - */
 
 .topnav {
@@ -225,12 +232,12 @@ input {
 
 .form-data[data-error]::after {
 	content: attr(data-error);
-	font-size: 0.4em;
+	font-size: 0.5em;
 	color: #e54858;
 	display: block;
-	margin-top: 7px;
-	margin-bottom: 7px;
-	text-align: right;
+	margin-top: 10px;
+	margin-bottom: 0;
+	text-align: left;
 	line-height: 0.3;
 	opacity: 0;
 	transition: 0.3s;
@@ -868,7 +875,7 @@ input[data-error]::after {
 	}
 
 	.form-data {
-		margin-bottom: 0.35rem;
+		margin-bottom: 0.3rem;
 	}
 
 	.form-data-birthdate {
@@ -972,6 +979,7 @@ input[data-error]::after {
 	/* - Footer - */
 
 	.footer {
+		display: block;
 		margin: 0 auto;
 	}
 
@@ -998,6 +1006,15 @@ input[data-error]::after {
 	}
 }
 
+@media screen and (max-width: 390px) and (max-height: 700px) {
+	/* Main content */
+
+	/* Modal form */
+	.checkbox-label {
+		margin-bottom: 0.2rem;
+	}
+}
+
 @media screen and (max-width: 699px) {
 	/* - Main content - */
 
@@ -1010,6 +1027,7 @@ input[data-error]::after {
 }
 
 @media screen and (max-width: 599px) {
+
 	/* - Header - */
 
 	.topnav {
@@ -1065,6 +1083,7 @@ input[data-error]::after {
 	.body-modal-active {
 		display: grid;
 		grid-template-columns: 1fr;
+		overflow: unset;
 	}
 
 	/* - Main content - */
@@ -1126,6 +1145,7 @@ input[data-error]::after {
 	.footer-modal-active {
 		grid-column: 1;
 		grid-row: 2;
+		display: none;
 	}
 }
 
@@ -1135,15 +1155,6 @@ input[data-error]::after {
 	/* Modal form */
 	.checkbox-label {
 		margin-bottom: 0.8rem;
-	}
-}
-
-@media screen and (max-width: 390px) and (max-height: 700px) {
-	/* Main content */
-
-	/* Modal form */
-	.checkbox-label {
-		margin-bottom: 0.2rem;
 	}
 }
 
