@@ -27,8 +27,8 @@
 	</head>
 
 	<body id="body">
-		<!-- Addition of HTML5 semantics tag to the application structure -->
-
+		<!-- Addition of HTML5 semantics tag to the application structure and modification of the header splitting -->
+		
 		<header class="topnav" id="myTopnav">
 			<nav class="main-navbar">
 				<div class="header-logo">
@@ -104,18 +104,17 @@
 
 								6. Addition of specific styling with new class to some form-data div;
 							-->
-							<div class="form-data">
+							<div class="form-data form-data-first-name">
 								<label for="first-name">Prénom</label>
 								<input
 									class="text-control"
 									type="text"
 									id="first-name"
 									name="first-name"
-									minlength="2"
 								/>
 							</div>
 
-							<div class="form-data">
+							<div class="form-data form-data-last-name">
 								<label for="last-name">Nom</label>
 								<input
 									class="text-control"
@@ -125,7 +124,7 @@
 								/>
 							</div>
 
-							<div class="form-data">
+							<div class="form-data form-data-email">
 								<label for="email">E-mail</label>
 								<input
 									class="text-control"
@@ -137,11 +136,9 @@
 
 							<div class="form-data form-data-birthdate">
 								<label for="birthdate">Date de naissance</label>
-
-								<!-- Change of the input type of the date of birth field in order to prevent the default style of the "date" type from making it deferred from the rendering of the mockup -->
 								<input
 									class="text-control"
-									type="text"
+									type="date"
 									id="birthdate"
 									name="birthdate"
 								/>
@@ -162,8 +159,8 @@
 							</div>
 
 							<div class="form-data form-data-tournament-location">
-								<!-- Corrected the translation of the phrase "Which location?" and inclusion of the paragraph used as the label for the radio buttons. Also see the comment #4 -->
-								<p class="radio-btn-group-label">Quelle ville ?</p>
+								<!-- Inclusion of the paragraph used as the label for the radio buttons. Also see the comment #4 -->
+								<p class="radio-btn-group-label">Quelles ville ?</p>
 
 								<div class="radio-btn-group">
 									<input
