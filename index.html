@@ -36,7 +36,7 @@
 					<img alt="logo" src="./pictures/Logo.png" />
 				</div>
 
-				<button type="button" class="main-navbar-icon" onclick="editNav()">
+				<button type="button" class="main-navbar-icon">
 					<span class="fa fa-bars"></span>
 				</button>
 				
@@ -83,13 +83,14 @@
 				<div class="modal-content">
 					<span class="modal-close-btn"></span>
 
-					<div class="modal-body">
+					<div id="modal-body" class="modal-body">
+
 						<!-- Modification of the method of sending the form to "POST" because the information which is present there needs to be sent with it and processed by the server  -->
 						<form
+							id="modal-form"
 							name="reserve"
 							action="index.html"
-							method="POST"
-							onsubmit="return validate();"
+							method="post"
 						>
 							<!--
 								1. Removal of unnecessary <br/> tags because newline is handled otherwise via CSS;
@@ -159,79 +160,79 @@
 							</div>
 
 							<div class="form-data form-data-tournament-location">
-								<!-- Inclusion of the paragraph used as the label for the radio buttons. Also see the comment #4 -->
-								<p class="radio-btn-group-label">Quelles ville ?</p>
+								<!-- Inclusion of the paragraph used as the label for the rounded checkboxes. Also see the comment #4 -->
+								<p class="rounded-checkbox-group-label">Quelles ville ?</p>
 
-								<div class="radio-btn-group">
+								<div class="rounded-checkbox-group">
 									<input
 										class="checkbox-input"
-										type="radio"
+										type="checkbox"
 										id="tournament-location-1"
 										name="tournament-location"
 										value="New York"
 									/>
-									<label class="radio-btn-label" for="tournament-location-1">
-										<span class="radio-btn-icon"></span>
+									<label class="rounded-checkbox-label" for="tournament-location-1">
+										<span class="rounded-checkbox-icon"></span>
 										New York
 									</label>
 
 									<input
 										class="checkbox-input"
-										type="radio"
+										type="checkbox"
 										id="tournament-location-2"
 										name="tournament-location"
 										value="San Francisco"
 									/>
-									<label class="radio-btn-label" for="tournament-location-2">
-										<span class="radio-btn-icon"></span>
+									<label class="rounded-checkbox-label" for="tournament-location-2">
+										<span class="rounded-checkbox-icon"></span>
 										San Francisco
 									</label>
 
 									<input
 										class="checkbox-input"
-										type="radio"
+										type="checkbox"
 										id="tournament-location-3"
 										name="tournament-location"
 										value="Seattle"
 									/>
-									<label class="radio-btn-label" for="tournament-location-3">
-										<span class="radio-btn-icon"></span>
+									<label class="rounded-checkbox-label" for="tournament-location-3">
+										<span class="rounded-checkbox-icon"></span>
 										Seattle
 									</label>
 
 									<input
 										class="checkbox-input"
-										type="radio"
+										type="checkbox"
 										id="tournament-location-4"
 										name="tournament-location"
 										value="Chicago"
 									/>
-									<label class="radio-btn-label" for="tournament-location-4">
-										<span class="radio-btn-icon"></span>
+									<label class="rounded-checkbox-label" for="tournament-location-4">
+										<span class="rounded-checkbox-icon"></span>
 										Chicago
 									</label>
 
 									<input
 										class="checkbox-input"
-										type="radio"
+										type="checkbox"
 										id="tournament-location-5"
 										name="tournament-location"
 										value="Boston"
 									/>
-									<label class="radio-btn-label" for="tournament-location-5">
-										<span class="radio-btn-icon"></span>
+									<label class="rounded-checkbox-label" for="tournament-location-5">
+										<span class="rounded-checkbox-icon"></span>
 										Boston
 									</label>
 
 									<input
 										class="checkbox-input"
-										type="radio"
+										type="checkbox"
 										id="tournament-location-6"
 										name="tournament-location"
 										value="Portland"
 									/>
-									<label class="radio-btn-label" for="tournament-location-6">
-										<span class="radio-btn-icon"></span>
+									<label class="rounded-checkbox-label" for="tournament-location-6">
+										<span class="rounded-checkbox-icon"></span>
 										Portland
 									</label>
 								</div>
@@ -273,6 +274,18 @@
 							/>
 							<!-- Removal of duplicate attribut class -->
 						</form>
+
+						<p class="confirmation-message content-hidden">
+							Merci !
+							<br /> 
+							Votre réservation
+							<br />
+							a été reçue.
+						</p>
+
+						<button type="reset" form="modal-form" class="confirmation-message-close-btn content-hidden btn-submit">
+							Fermer
+						</button>
 					</div>
 				</div>
 			</aside>

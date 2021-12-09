@@ -141,25 +141,7 @@ main {
 
 /* Modal form */
 
-.button {
-	background: #fe142f;
-	margin-top: 0.5em;
-	padding: 1em;
-	color: #fff;
-	border-radius: 15px;
-	cursor: pointer;
-	font-size: 16px;
-}
-
-.button:hover {
-	background: #3876ac;
-}
-
 /* Removed unused class selector .smFont */
-
-.modal-enabled {
-	display: block;
-}
 
 .modal-background {
 	display: none;
@@ -197,9 +179,27 @@ main {
 	box-shadow: 0rem 0.9rem 1.5rem -0.68rem #404040;
 }
 
+/* ++ Ajout de quatres classes pour la mise en page du message de confirmation de l'envoie du formulaire. ++ */
+
+/* Ajout 1 */
+.modal-content-confirmation-message-active {
+	min-height: 50.25rem;
+
+	display: flex;
+}
+
 .modal-body {
 	padding: 15px 8%;
 	margin: 15px auto;
+}
+
+/* + Ajout 2 + */
+.modal-body-confirmation-message-active {
+	display: flex;
+	flex-flow: row wrap;
+
+	justify-content: center;
+	align-items: center;
 }
 
 label {
@@ -263,30 +263,33 @@ input {
 	margin-bottom: 0;
 }
 
+.form-data-tournament-location[data-error-visible="true"]::after {
+	margin-top: 3px;
+	margin-bottom: 5px;
+}
+
 .form-data-terms-conditions-and-newsletter {
 	margin-bottom: 1rem;
 }
 
 /* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+	Removed the input [data-error]: after because it is a duplication of the above code 
+	which already defines the style of the error message.
+*/
 
-.radio-btn-group-label {
+.rounded-checkbox-group-label {
 	margin-bottom: 0.9rem;
 	font-weight: normal;
 	font-size: 15px;
 }
 
-.radio-btn-group {
+.rounded-checkbox-group {
 	display: flex;
 	flex-flow: row wrap;
 	gap: 0 1.5rem;
 }
 
-.radio-btn-label {
+.rounded-checkbox-label {
 	font-size: 0.7rem;
 
 	display: flex;
@@ -297,7 +300,7 @@ input[data-error]::after {
 	margin-bottom: 0.4rem;
 }
 
-.radio-btn-icon {
+.rounded-checkbox-icon {
 	width: 24px;
 	height: 24px;
 
@@ -312,7 +315,7 @@ input[data-error]::after {
 	transition: 0.3s;
 }
 
-.radio-btn-icon::after {
+.rounded-checkbox-icon::after {
 	content: "";
 
 	display: block;
@@ -340,7 +343,7 @@ input[data-error]::after {
 	width: 24px;
 	height: 24px;
 
-	/* Changed the values ​​of the border-radius and border properties that were previously used to style radio buttons */
+	/* Changed the values ​​of the border-radius and border properties that were previously used to style rounded checkboxes */
 
 	border-radius: 0.4rem; /* Correction of the border-radius of the checkbox to correspond to its rendering on the mockup */
 	border: 0;
@@ -353,19 +356,19 @@ input[data-error]::after {
 	transition: 0.3s;
 }
 
-/* Removed the rule that defines the style of radio buttons because it was implemented with a new method */
+/* Removed the rule that defines the style of rounded checkboxes because it was implemented with a new method */
 
 .checkbox-input {
 	display: none;
 }
 
 .checkbox-input:checked + .checkbox-label .checkbox-icon,
-.checkbox-input:checked + .radio-btn-label .checkbox-icon {
+.checkbox-input:checked + .rounded-checkbox-label .checkbox-icon {
 	background-color: #279e7a;
 }
 
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .radio-btn-label .radio-btn-icon::after {
+.checkbox-input:checked + .rounded-checkbox-label .rounded-checkbox-icon::after {
 	opacity: 1;
 	background: #279e7a;
 }
@@ -413,6 +416,21 @@ input[data-error]::after {
 .modal-close-btn:after {
 	transform: rotate(-45deg);
 }
+
+.button {
+	background: #fe142f;
+	margin-top: 0.5em;
+	padding: 1em;
+	color: #fff;
+	border-radius: 15px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.button:hover {
+	background: #3876ac;
+}
+
 .btn-submit,
 .btn-signup {
 	background: #fe142f;
@@ -428,6 +446,30 @@ input[data-error]::after {
 
 .btn-submit {
 	padding: 0.6rem 4rem;
+}
+
+.confirmation-message {
+	margin-top: 9rem;
+
+	font-weight: normal;
+	text-align: center;
+	font-size: 2.4rem;
+}
+
+/* + Ajout 3 + */
+.confirmation-message-close-btn {
+	margin: 0 auto;
+	align-self: flex-end;
+}
+
+/* + Ajout 4 + */
+
+/* 
+	Allow to remove the form or the content of the
+	confirmation message at will with JavaScript.
+*/
+.content-hidden {
+	display: none;
 }
 
 /* custom select styles */
@@ -626,17 +668,17 @@ input[data-error]::after {
 
 	/* Modal form */
 
-	.radio-btn-label {
+	.rounded-checkbox-label {
 		font-size: 0.72rem;
 		margin-bottom: 0.5rem;
 	}
 
-	.radio-btn-icon {
+	.rounded-checkbox-icon {
 		width: 20px;
 		height: 20px;
 	}
 
-	.radio-btn-icon::after {
+	.rounded-checkbox-icon::after {
 		width: 14px;
 		height: 14px;
 	}
@@ -869,7 +911,7 @@ input[data-error]::after {
 	}
 
 	.text-control {
-		padding: 1.2rem;
+		padding: 0 1.2rem;
 
 		font-size: 1.3rem;
 	}
@@ -894,11 +936,11 @@ input[data-error]::after {
 		margin-bottom: 0.5rem;
 	}
 
-	.radio-btn-group-label {
+	.rounded-checkbox-group-label {
 		font-size: 16px;
 	}
 
-	.radio-btn-group {
+	.rounded-checkbox-group {
 		gap: 0 0.7rem;
 	}
 
@@ -1052,7 +1094,7 @@ input[data-error]::after {
 		margin-bottom: 0.5rem;
 	}
 
-	.radio-btn-group-label {
+	.rounded-checkbox-group-label {
 		font-size: 1rem;
 	}
 
@@ -1111,9 +1153,15 @@ input[data-error]::after {
 	.modal-content {
 		margin: 0;
 
+		display: flex;
+
 		box-shadow: none;
 
 		border-radius: 10px 10px 0 0;
+	}
+
+	.modal-content-confirmation-message-active {
+		min-height: 38rem;
 	}
 
 	.checkbox-label {
@@ -1123,6 +1171,14 @@ input[data-error]::after {
 	.checkbox-label .checkbox-icon {
 		left: -27px;
 		top: -2px;
+	}
+
+	.confirmation-message {
+		margin-top: 5rem;
+	
+		font-weight: normal;
+		text-align: center;
+		font-size: 2.3rem;
 	}
 
 	/* Hero section */
@@ -1169,7 +1225,7 @@ input[data-error]::after {
 
 	/* Modal form */
 
-	.radio-btn-group {
+	.rounded-checkbox-group {
 		margin-bottom: 0.6rem;
 	}
 

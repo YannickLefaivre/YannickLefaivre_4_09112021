@@ -8,312 +8,62 @@ const headerLogo = document.querySelector(".header-logo");
 
 const mainNavigationBar = document.querySelector(".main-navbar");
 
+const mainNavigationBarButton = document.querySelector(".main-navbar-icon");
+
+const navigationLinks = document.querySelectorAll(".main-navbar a");
+
 // Main content DOM elements
 const mainContent = document.querySelector(".main");
 
 const heroSection = document.querySelector(".hero-section");
 
-// Modal form DOM elements
-const modalBackground = document.querySelector(".modal-background");
+// Hero section DOM elements
 
 const modalButton = document.querySelectorAll(".modal-btn");
 
+// Modal form DOM elements
+
+const modalBackground = document.querySelector(".modal-background");
+
 const modalCloseButton = document.querySelector(".modal-close-btn");
 
+const form = document.querySelector("form");
+
 const formData = document.querySelectorAll(".form-data");
+
+const submitButton = document.querySelector(".button");
+
+const modalContent = document.querySelector(".modal-content");
+
+/* Récupère le corps du formulaire afin de modifier sa façon dispositionné ses enfants lorsque le bouton et le paragraphe de confirmation de l'envoie réussi est affiché */
+const modalBody = document.querySelector(".modal-body");
+
+/* 
+  Récupère une référence au paragraphe contenant le message de confirmation 
+  et une du bouton de fermeture de la modal quand le message apparaît 
+*/
+const confirmationMessage =  document.querySelector(".confirmation-message");
+const confirmationMessageCloseButton = document.querySelector(".confirmation-message-close-btn");
 
 // Footer DOM elements
 const footer = document.querySelector(".footer");
 
 
-// Launch modal event
-modalButton.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// Close modal event
-modalCloseButton.addEventListener("click", closeModal);
-
-
-// Form validation functions
-
-/* 
-  First and last name inputs event :
-
-  Vérifie que l'utilisateur a remplie correctement le champ Prénom et Nom en vérifiant si elles possèdent au minimum 2 caractères ou ne sont pas vide
-
-
-firstNameInput.addEventListener("input", function(event) {
-  var firstName = event.target.value;
-  
-  var nameRegex = /[a-zA-Z]{2,}/g;
-
-  if (!nameRegex.test(firstName)) {
-
-    if (firstName.length === 0) {
-
-      console.error("Empty input field detected.");
-
-    } else {
-
-      console.error(firstName, "is a invalid input.");
-
-    }
-
-  } else {
-
-    console.log(firstName, "is a valid input.");
-
-  }
-});
-
-lastNameInput.addEventListener("input", function(event) {
-  var lastName = event.target.value;
-
-  if (lastName.length < 2 || lastName.length === 0) {
-
-    if (lastName.length === 0) {
-
-      console.log("Empty input field detected.");
-
-    } else {
-
-      console.log(lastName, "is a invalid input.");
-
-    }
-
-    validationInProgress = false;
-
-  } else {
-
-    console.log(lastName, "is a valid input.");
-
-    validationInProgress = true;
-
-  }
-});
-
-
-/* 
-  Ajoute un évènement écoutant tout changement effectuer dans le champ Email et vérifie que les données saisies dans celui-ci respectent les règles syntaxiques des adresses email en utilisant une Regex.
-
-emailInput.addEventListener("input", function(event) {
-
-  var typedEmail = event.target.value;
-
-  /* 
-    RFC (Request for Comment) 5322 compliant regex found on the most upvoted reponse to this StackOverflow post : https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression.
-
-    *Brief explanation:*
-
-      This pattern allows you to check if the user has entered in the e-mail field an address only with letters, numbers and special characters in the local part : /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*
-      
-      Or the email can contain alphanumeric and special characters in quotes where control characters such as white space are allowed : |(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")
-    
-      As well as in the domain part after the symbol "@", only a TLD (top level domain) with one or more dots and letters : (?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?
-
-      Or an IP address containing several digits, periods and letters possibly combined with control characters at a precise level of the string : |\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/ 
-  
-  var emailPattern = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-
-  if (emailPattern.test(typedEmail)) {
-
-    console.log(`The ${typedEmail} is valid.`);
-    validationInProgress = true;
-    
-  } else {
-
-    console.error(`Your email : ${typedEmail}. Do not match the rules of email syntax.`);
-    validationInProgress = false;
-
-  }
-});
-
-
-/* 
-  Add an event to the event queue which fire when user make some change to the numbers of tournament attended field. When this occures a pattern is used to check if the field contain only digital characters.
- 
-numbersOfTournament.addEventListener("input" , function(event) {
-  var numbersOfTournamentAttended = event.target.value;
-
-  // A pattern for checking if only numbers between 0 and 9 are enter in the "Numbers of tournament attended" field.
-  var numbersOfTournamentAttendedPattern = /^\d{1,2}$/g;
-
-  if (numbersOfTournamentAttendedPattern.test(numbersOfTournamentAttended)) {
-
-    console.log("Congrat! you typed only number in this field!");
-    validationInProgress = true;
-    
-  } else {
-
-    console.error("The numbers of tournament field must only contain numbers and nothing more than two of it");
-    validationInProgress = false;
-
-  }
-});
-
-
-/* A loop goes through all the radio buttons looking for a checked button. If one button is checked the loop stops and validates the set of fields named "Tournament locations". Else the fieldset is invalid. 
-function checkValidityOfRadioButtons() {
-  
-  var isValid = false;
-
-  for (let location of tournamentLocations) {
-    if(!location.checked)
-    {
-
-      console.error("the tournament locations fieldset is invalid");
-      isValid = false;
-
-    } else {
-      
-      console.log("the tournament locations fieldset is valid");
-      isValid = true;
-      break;
-    }
-  }
-
-  if(isValid) {
-
-    console.log("Une option a été choisie");
-    validationInProgress = true;
-
-  } else {
-
-    alert("Vous devez choisir une option.");
-    validationInProgress = false;
-
-  }
-} */
-
-
-function validate() {
-
-  /*
-   Retrieving fields and set of fields to add a custom data attribute to they
-   that will display the error message when one of them does not pass validation process.
-  */
-  const firstNameField = document.querySelector(".form-data-first-name");
-  const lastNameField = document.querySelector(".form-data-last-name");
-  const emailField = document.querySelector(".form-data-email");
-  const birthdateField = document.querySelector(".form-data-birthdate");
-  const numberOfTournamentsField = document.querySelector(".form-data-number-of-tournaments-attended");
-  const tournamentLocationsFieldset = document.querySelector(".form-data-tournament-location");
-  const termsConditionsAndNewsletterFieldset = document.querySelector(".form-data-terms-conditions-and-newsletter");
-
-  // get all form fields value apart the two last fieldsets (tournament-locations and terms-conditions-and-newsletter)
-  var firstNameInputValue = document.getElementById("first-name").value;
-  var lastNameInputValue = document.getElementById("last-name").value;
-  var emailInputValue = document.getElementById("email").value;
-  var birthdateInputValue = document.getElementById("birthdate").value;
-  var numberOfTournamentsInputValue = document.getElementById("number-of-tournaments").value;
-  var tournamentLocationsInputs = document.getElementsByName("tournament-location");
-
-  // First and last name pattern to check the validity of the associated field
-  var namePattern = /^[a-zA-Z]{2,}$/g;
-
-  // email validation Regex found on the input element page, in the section of the email type, of the HTML Living standard specification
-  var emailPattern = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-
-  // Regex who can match only string with number in it and are nothing more than two
-  var numberOfTournamentsPattern = /^\d{1,2}$/g;
-
-
-  // If the First name field does not have at least two characters and does not contain only letters or is empty then display an error message to warn the user that this field has not been validated.
-  if(!namePattern.test(firstNameInputValue) && firstNameInputValue.length === 0) {
-
-    firstNameField.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.");
-    firstNameField.setAttribute("data-error-visible", "true");
-
-    return false;
-
-  }
-
-  // If the Name field does not have at least two characters and does not contain only letters or is empty then display an error message to warn the user that this field has not been validated.
-  if(!namePattern.test(lastNameInputValue) && lastNameInputValue.length === 0) {
-
-    lastNameField.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
-    lastNameField.setAttribute("data-error-visible", "true");
-
-    return false;
-
-  }
-
-  // If the Email field does not respect the syntax of a valid email address according to the HTML Living Standard specification or is empty then display an error message to warn the user that this field has not been validated.
-  if(!emailPattern.test(emailInputValue) && emailInputValue.length === 0) {
-
-    emailField.setAttribute("data-error", "Vous devez entrer une adresse electronique valide.");
-    emailField.setAttribute("data-error-visible", "true");
-
-    return false;
-
-  }
-
-  // If the Birthdate field is empty / has not been filled in, then display an error message to warn the user that this field has not been validated.
-  if(birthdateInputValue.length === 0) {
-
-    birthdateField.setAttribute("data-error", "Vous devez entrer votre date de naissance.");
-    birthdateField.setAttribute("data-error-visible", "true");
-    
-    return false;
-    
-  }
-
-  // If the Number of tournaments field does not contain only numbers or is empty then display an error message to warn the user that this field has not been validated.
-  if(!numberOfTournamentsPattern.test(numberOfTournamentsInputValue) && numberOfTournamentsInputValue.length === 0) {
-
-    numberOfTournamentsField.setAttribute("data-error", "Vous devez saisir une valeur numérique");
-    numberOfTournamentsField.setAttribute("data-error-visible", "true");
-
-    return false;
-
-  }
-
-  // Go through the list of checkbox buttons naming "tournament-location" to see if there is at least one checked.
-  var atLeastOneLocationIsChecked = false;
-  for (let location of tournamentLocationsInputs) {
-
-    if(location.checked) {
-
-      atLeastOneLocationIsChecked = true;
-
-    }
-  };
-
-  // If no location has been chosen then display an error message to warn the user that this set of fields has not been validated.
-  if(!atLeastOneLocationIsChecked) {
-
-    tournamentLocationsFieldset.setAttribute("data-error", "Vous devez choisir une option.");
-    tournamentLocationsFieldset.setAttribute("data-error-visible", "true");
-
-    return false;
-
-  }
-
-  // If the terms and conditions checkbox has not been checked then display an error message to warn the user that this field has not been validated.
-  if(!document.getElementById("checkbox-terms-and-conditions").checked) {
-
-    termsConditionsAndNewsletterFieldset.setAttribute("data-error", "Vous devez vérifier que vous acceptez les termes et conditions.");
-    termsConditionsAndNewsletterFieldset.setAttribute("data-error-visible", "true");
-
-    return false;
-
-  }
-
-  // all the fields have passed validation
-  return true;
-}
+// Checking variable
+let confirmationMessageDisplayed = false;
 
 
 // Brings up the navigation bar on mobile and tablette when the user clicks the hamburger button
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  var header = document.getElementById("myTopnav");
 
-  if (x.className === "topnav") {
+  if (header.className === "topnav") {
 
-    x.className += " responsive";
+    header.className += " responsive";
 
   } else {
 
-    x.className = "topnav";
+    header.className = "topnav";
 
   }
 }
@@ -400,11 +150,21 @@ function hideFooter() {
   }
 }
 
+/* Gives focus to the first control on the form */
+function givesFocusToTheFirstControlOnTheForm() {
+
+  var firstControl = document.getElementById("first-name");
+  firstControl.focus();
+
+}
+
 /*
   The function launch the modal: makes it appear in the foreground in front of / above the Hero section and places it below the header.
 */
 function launchModal() {
   modalBackground.classList.add("modal-enabled");
+
+  givesFocusToTheFirstControlOnTheForm();
 
   gridDisplayOfBodyElements();
 
@@ -439,7 +199,369 @@ function closeModal() {
 
   } else {
 
-    Console.error("The modal-enable class could not be removed from the class list of the <aside> tag having the modal-background class");
+    console.error("The modal-enable class could not be removed from the class list of the <aside> tag having the modal-background class");
 
   }
 }
+
+// -- Form validation functions --
+
+
+// Récupère une réference à un champ du formulaire designé par le paramètre "fieldToGet" et la retourne
+function getFormField(fieldToGet) {
+
+  const field = document.querySelector(fieldToGet);
+
+  return field;
+
+}
+
+// Retrieves the value of the field designated by the "inputToGetTheValue" parameter and returns it.
+function getInputValue(inputFromToGetTheValue) {
+
+  var inputValue = document.getElementById(inputFromToGetTheValue).value;
+
+  return inputValue;
+
+}
+
+// Displays an error message below the field that is not correctly completed.
+function displayErrorMessage(concernedField, errorMessageToDisplay) {
+
+  getFormField(concernedField).setAttribute("data-error", errorMessageToDisplay);
+  getFormField(concernedField).setAttribute("data-error-visible", "true");
+
+}
+
+// Suppresses the error message that appears under an invalid field.
+function deleteErrorMessage(concernedField) {
+
+  getFormField(concernedField).removeAttribute("data-error");
+  getFormField(concernedField).removeAttribute("data-error-visible");
+
+}
+
+/* 
+  Validation of the First name or Last name field when it contains at least 2 characters (upper or lower case letters) or is not empty.
+*/
+function validateNameField(nameInput, nameField, nameFieldErrorMessage) {
+
+  // First and last name pattern to check the validity of the associated field
+  var namePattern = /^[a-zA-Z]{2,}$/g;
+  
+
+  if(!namePattern.test(getInputValue(nameInput)) || getInputValue(nameInput).length === 0) {
+
+    displayErrorMessage(nameField, nameFieldErrorMessage);
+
+    return false;
+
+  } else {
+
+    deleteErrorMessage(nameField);
+
+  }
+
+  return true;
+}
+
+/* 
+  Validate the email field when it contains an email address
+  whose syntax conforms to the standard of the HTML Living Standard.
+*/
+function validateEmailField() {
+
+  var emailFieldId = ".form-data-email";
+  var emailInputValue = getInputValue("email");
+
+  // Email address validation regex found on the input element page, in the email type section, of the standard HTML Living specification
+  var emailPattern = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+ 
+  if(!emailPattern.test(emailInputValue) || emailInputValue.length === 0) {
+
+    displayErrorMessage(emailFieldId, "Veuillez saisir une adresse électronique valide.");
+
+    return false;
+
+  } else {
+
+    deleteErrorMessage(emailFieldId);
+
+  }
+
+  return true;
+}
+
+
+// Validation of the birthdate field when it is not empty.
+function validateBirthdateField() {
+
+  var birthdateFieldId = ".form-data-birthdate";
+
+  if(getInputValue("birthdate").length === 0) {
+
+    displayErrorMessage(birthdateFieldId, "Vous devez entrer votre date de naissance.");
+    
+    return false;
+    
+  } else {
+
+    deleteErrorMessage(birthdateFieldId);
+
+  }
+
+  return true;
+}
+
+// Validation of the number of tournaments field when it is not empty and contains only numbers.
+function validateNumberOfTournamentsField() {
+
+  var numberOfTournamentsFieldId = ".form-data-number-of-tournaments-attended";
+  var numberOfTournamentsInputValue = getInputValue("number-of-tournaments");
+
+  // A Regex that only matches a string with a minimum of two or more numbers
+  var numberOfTournamentsPattern = /^\d{1,2}$/g;
+
+  if(!numberOfTournamentsPattern.test(numberOfTournamentsInputValue) || numberOfTournamentsInputValue.length === 0) {
+
+    displayErrorMessage(numberOfTournamentsFieldId, "Vous devez saisir une valeur numérique.");
+
+    return false;
+
+  } else {
+
+    deleteErrorMessage(numberOfTournamentsFieldId);
+
+  }
+
+  return true;
+}
+
+
+/* 
+  Validation of the field set for the location of the tournament(s) in which the user has already participated when at least one option has
+  been chosen.
+*/
+function validateTournamentLocationsFieldset() {
+
+  var tournamentLocationsfieldsetId = ".form-data-tournament-location";
+
+  // Retrieve a reference to all the checkbox buttons of the cities where the user has already participated in a GameOn event.
+  var tournamentLocationsInputs = document.getElementsByName("tournament-location");
+
+  // Go through the list of checkbox buttons naming "tournament-location" to see if there is at least one checked.
+  var atLeastOneLocationIsChecked = false;
+  for (let location of tournamentLocationsInputs) {
+
+    if(location.checked) {
+
+      atLeastOneLocationIsChecked = true;
+
+    }
+  };
+
+  if(!atLeastOneLocationIsChecked) {
+
+    displayErrorMessage(tournamentLocationsfieldsetId, "Vous devez choisir une option.");
+
+    return false;
+
+  } else {
+
+    deleteErrorMessage(tournamentLocationsfieldsetId);
+
+  }
+
+  return true;
+}
+
+
+// Validation of the terms and conditions field by ensuring that the user has checked the corresponding box.
+function validateTermsAndConditionsFieldset() {
+
+  var termsAndConditionsFieldsetId = ".form-data-terms-conditions-and-newsletter";
+
+  // If the terms and conditions checkbox has not been checked then display an error message to warn the user that this field has not been validated.
+  if(!document.getElementById("checkbox-terms-and-conditions").checked) {
+
+    displayErrorMessage(termsAndConditionsFieldsetId, "Vous devez vérifier que vous acceptez les termes et conditions.");
+
+    return false;
+
+  } else {
+
+    deleteErrorMessage(termsAndConditionsFieldsetId);
+
+  }
+
+  return true;
+}
+
+
+/* 
+  Validation of the form when all the fields are validated, otherwise at the first invalid field, 
+  cancel sending of the form to the server. 
+*/
+function validate() {
+
+  if(!validateNameField(
+    "first-name", 
+    ".form-data-first-name", 
+    "Veuillez entrer 2 caractères ou plus pour le champ du prénom.")) {
+
+    return false;
+
+  }
+
+  if(!validateNameField(
+    "last-name", 
+    ".form-data-last-name", 
+    "Veuillez entrer 2 caractères ou plus pour le champ du nom.")) {
+
+    return false;
+
+  }
+
+  if(!validateEmailField()) {
+
+    return false;
+
+  }
+
+  if(!validateBirthdateField()) {
+
+    return false;
+
+  }
+
+  if(!validateNumberOfTournamentsField()) {
+
+    return false;
+
+  }
+
+  if(!validateTournamentLocationsFieldset()) {
+
+    return false;
+
+  }
+
+  if(!validateTermsAndConditionsFieldset()) {
+
+    return false;
+
+  }
+
+  // all the fields have passed validation
+  return true;
+}
+
+// Affiche le message de confirmation que l'envoie du formulaire a réussi
+function displayConfirmationMessage() {
+
+  /* 
+    1. Réajustement de la hauteur de la modale ;
+    2. Changement du display du corps de la modale pour Flexbox ;
+    3. Affichage du message de confirmation et du bouton de fermeture de la modale.
+  */
+
+    modalContent.classList.add("modal-content-confirmation-message-active"); /* 1 */
+    modalBody.classList.add("modal-body-confirmation-message-active"); /* 2 */
+    form.classList.add("content-hidden"); /* 2 */
+  
+    confirmationMessage.classList.remove("content-hidden"); /* 3 */
+    confirmationMessageCloseButton.classList.remove("content-hidden"); /* 3 */
+
+}
+
+// Redisplays the form and again hides the confirmation message of the successful submission
+function resetForm(allreadyReset = false) {
+  
+  if(allreadyReset) {
+
+    return false;
+
+  }
+
+  modalContent.classList.remove("modal-content-confirmation-message-active");
+  modalBody.classList.remove("modal-body-confirmation-message-active");
+
+  form.classList.remove("content-hidden");
+
+  confirmationMessage.classList.add("content-hidden");
+  confirmationMessageCloseButton.classList.add("content-hidden");
+
+  return true;
+}
+
+/*
+  Implemented the behavior of the "submit" event so that the form is not sent 
+  directly after passing validation. Thus allowing to appear the confirmation 
+  message of the successful sending. 
+*/
+function onSubmit(event) {
+
+  event.preventDefault();
+
+  /* 
+    Calls the validate () function to check the validity of each field in the form.
+    If there is one that is not valid an error message will be displayed below the 
+    invalid field and validation will not go further until this field is validated.
+  */
+  if(!validate()) {
+
+    return false;
+
+  }
+ 
+  displayConfirmationMessage();
+
+  confirmationMessageDisplayed = true;
+
+  return true;
+}
+
+// Opens or closes the navigation bar when the user clicks the hamburger menu icon
+mainNavigationBarButton.addEventListener("click", editNav);
+
+// Closes the navigation bar on mobile each time the user clicks on any of the navigation links 
+navigationLinks.forEach((navigationLink) => navigationLink.addEventListener("click", editNav));
+
+// Launch modal event
+modalButton.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// Close modal event
+modalCloseButton.addEventListener("click", function() {
+
+  closeModal();
+
+  if(confirmationMessageDisplayed) {
+
+    resetForm();
+
+  }
+
+});
+
+/*
+  Addition of an event listener to validate the form when the user clicks 
+  on the "C'est parti" button. 
+*/
+submitButton.addEventListener("click", validate);
+
+// Adding a submit event listener to the form to change the default behavior 
+form.addEventListener("submit", onSubmit);
+
+/* 
+  Closing of the modal when the user clicks on the "Close" button
+  and reestablishing / reappearing the form fields in the background.
+*/
+confirmationMessageCloseButton.addEventListener("click", function() {
+
+  closeModal();
+
+  resetForm();
+
+  confirmationMessageDisplayed = false;
+});
