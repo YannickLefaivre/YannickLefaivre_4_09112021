@@ -15,6 +15,8 @@
 		<!-- Fixed stylesheet file path to reflect change in repository folder structure -->
 		<link rel="stylesheet" href="./public/css/modal.css" />
 
+		<link rel="icon" href="pictures/Logo.png" type="image/png"> <!-- Addition of the favicon -->
+
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -81,9 +83,9 @@
 			<!-- Addition of more explicit class name for the div serving respectively as background and wrapper / container to the modal, as well as for its close button -->
 			<aside class="modal-background">
 				<div class="modal-content">
-					<span class="modal-close-btn"></span>
+					<button type="button" class="modal-close-btn"></button>
 
-					<div id="modal-body" class="modal-body">
+					<div class="modal-body">
 
 						<!-- Modification of the method of sending the form to "POST" because the information which is present there needs to be sent with it and processed by the server  -->
 						<form
