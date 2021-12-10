@@ -35,21 +35,17 @@ const submitButton = document.querySelector(".button");
 
 const modalContent = document.querySelector(".modal-content");
 
-/* Récupère le corps du formulaire afin de modifier sa façon dispositionné ses enfants lorsque le bouton et le paragraphe de confirmation de l'envoie réussi est affiché */
 const modalBody = document.querySelector(".modal-body");
 
-/* 
-  Récupère une référence au paragraphe contenant le message de confirmation 
-  et une du bouton de fermeture de la modal quand le message apparaît 
-*/
 const confirmationMessage =  document.querySelector(".confirmation-message");
+
 const confirmationMessageCloseButton = document.querySelector(".confirmation-message-close-btn");
 
 // Footer DOM elements
 const footer = document.querySelector(".footer");
 
 
-// Checking variable
+// Variable for verification purposes
 let confirmationMessageDisplayed = false;
 
 
@@ -476,11 +472,12 @@ function displayConfirmationMessage() {
 }
 
 // Redisplays the form and again hides the confirmation message of the successful submission
-function resetForm(allreadyReset = false) {
-  
-  if(allreadyReset) {
+function resetForm(withXButton = true, xButton = HTMLButtonElement) {
 
-    return false;
+  if(withXButton) {
+
+    xButton.setAttribute("type", "reset");
+    xButton.setAttribute("form", "modal-form"); 
 
   }
 
@@ -538,7 +535,9 @@ modalCloseButton.addEventListener("click", function() {
 
   if(confirmationMessageDisplayed) {
 
-    resetForm();
+    resetForm(true, modalCloseButton);
+
+    confirmationMessageDisplayed = false;
 
   }
 
@@ -561,7 +560,7 @@ confirmationMessageCloseButton.addEventListener("click", function() {
 
   closeModal();
 
-  resetForm();
+  resetForm(false);
 
   confirmationMessageDisplayed = false;
 });
