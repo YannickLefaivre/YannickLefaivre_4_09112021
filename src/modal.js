@@ -50,7 +50,7 @@ let confirmationMessageDisplayed = false;
 
 
 // Brings up the navigation bar on mobile and tablette when the user clicks the hamburger button
-function editNav() {
+function editNavigationBar() {
   var header = document.getElementById("myTopnav");
 
   if (header.className === "topnav") {
@@ -65,8 +65,10 @@ function editNav() {
 }
 
 // Displays an error message informing about the absence of a class within the class list of an element 
-function LogAMissingClassError(missinClassName, tagName, firstClassName) {
-  Console.error("The " + {missinClassName} + " class could not be added from the class list of the " + {tagName} + " tag having the " + {firstClassName} + " class");
+function LogAMissingClassError(missingClassName, tagName, firstClassName) {
+
+  Console.error(`The ${missingClassName} class could not be added from the class list of the ${tagName} tag having the ${firstClassName}  class`);
+
 }
 
 /* 
@@ -150,6 +152,7 @@ function hideFooter() {
 function givesFocusToTheFirstControlOnTheForm() {
 
   var firstControl = document.getElementById("first-name");
+  
   firstControl.focus();
 
 }
@@ -200,10 +203,10 @@ function closeModal() {
   }
 }
 
+
 // -- Form validation functions --
 
-
-// Récupère une réference à un champ du formulaire designé par le paramètre "fieldToGet" et la retourne
+// Retrieve a reference to a field of the form designated by the "fieldToGet" parameter and return it
 function getFormField(fieldToGet) {
 
   const field = document.querySelector(fieldToGet);
@@ -453,13 +456,13 @@ function validate() {
   return true;
 }
 
-// Affiche le message de confirmation que l'envoie du formulaire a réussi
+// Displays the confirmation message that the form submission was successful
 function displayConfirmationMessage() {
 
   /* 
-    1. Réajustement de la hauteur de la modale ;
-    2. Changement du display du corps de la modale pour Flexbox ;
-    3. Affichage du message de confirmation et du bouton de fermeture de la modale.
+    1. Readjustment of the height of the modal;
+    2. Change of the modal body display for Flexbox;
+    3. Display of the confirmation message and the button for closing the modal.
   */
 
     modalContent.classList.add("modal-content-confirmation-message-active"); /* 1 */
@@ -520,10 +523,10 @@ function onSubmit(event) {
 }
 
 // Opens or closes the navigation bar when the user clicks the hamburger menu icon
-mainNavigationBarButton.addEventListener("click", editNav);
+mainNavigationBarButton.addEventListener("click", editNavigationBar);
 
 // Closes the navigation bar on mobile each time the user clicks on any of the navigation links 
-navigationLinks.forEach((navigationLink) => navigationLink.addEventListener("click", editNav));
+navigationLinks.forEach((navigationLink) => navigationLink.addEventListener("click", editNavigationBar));
 
 // Launch modal event
 modalButton.forEach((btn) => btn.addEventListener("click", launchModal));
