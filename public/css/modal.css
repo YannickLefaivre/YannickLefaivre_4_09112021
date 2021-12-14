@@ -181,7 +181,7 @@ main {
 
 /* ++ Added four classes for the layout of the successful send confirmation message. ++ */
 
-/* Addition 1 */
+/* + Addition 1 + */
 .modal-content-confirmation-message-active {
 	min-height: 50.25rem;
 
@@ -293,6 +293,8 @@ input {
 }
 
 .rounded-checkbox-label {
+	margin-bottom: 0.4rem;
+	
 	font-size: 0.7rem;
 
 	display: flex;
@@ -300,7 +302,6 @@ input {
 	justify-content: space-between;
 	align-items: center;
 	gap: 0 0.4rem;
-	margin-bottom: 0.4rem;
 }
 
 .rounded-checkbox-icon {
@@ -486,7 +487,7 @@ input {
 /* Removed the custom select style because there is no selec box in this application */
 
 .hero-section {
-	min-height: 33rem; /* Changed the value of min-height so that the hero can get as close as possible to the height he has on the model on small computer (laptops) */
+	min-height: 33rem; /* Changed the value of min-height so that the hero can get as close as possible to the height he has on small computer (laptops) version of the mockup */
 	max-height: 40rem;
 	border-radius: 10px;
 	display: grid;
@@ -753,16 +754,12 @@ input {
 	.topnav .main-navbar-icon {
 		grid-column: -1;
 		grid-row: 1;
-
-		float: none; /* 2 */
+		
 		display: block;
 		color: #f00;
 		font-size: 2.1rem;
 
 		/* Removed the top margin of the hamburger menu main-navbar-icon because its margin from the top of the web page is now managed with the margin of its container (.topnav) */
-
-		order: -1; /* This property places the hamburger menu button at the top of the navigation links list in the main-navbar column */
-		justify-self: flex-end;
 	}
 
 	.topnav.responsive a {
@@ -1063,7 +1060,7 @@ input {
 }
 
 @media screen and (max-width: 500px) {
-	/* Top level HTML element */
+	/* - Sectionning root - */
 
 	.body-modal-active {
 		display: grid;

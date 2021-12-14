@@ -46,11 +46,16 @@
 				<!-- Removal of the link who redirect to the home page because this one it not present on the mockup -->
 				
 				<ul>
+
+					<!-- 
+						Add of active class for the event details link been styled like on the mockup : 
+						with a red background and a little bevel on the edge 
+					-->
 					<li><a href="#" class="active">Détails de l'évènement</a></li>
 					<li><a href="#"><span>À propos</span></a></li>
 					<li><a href="#"><span>Contact</span></a></li>
 					<li><a href="#"><span>Évènements passés</span></a></li>
-				</ul><!-- Add of active class for this link been styled like on the mockup : with a red background and a little bevel on the edge -->
+				</ul>
 			</nav>
 			<!-- Removal of the stray end tag "div" -->
 		</header>
@@ -100,13 +105,11 @@
 
 								2. Rename the formData class to "form-data" so that it follows the project's naming convention;
 
-								3. Modification of the name of the identifier of the input of the date of birth to avoid the appearance of a predefined layout which does not appear on the mockup;
+								3. Modifying the name of the classes, the identifier and the name of the inputs for better readability;
 
-								4. Modifying the name of the classes, the identifier and the name of the inputs;
+								4. Binding labels to their inputs;
 
-								5. Binding labels to their inputs;
-
-								6. Addition of specific styling with new class to some form-data div;
+								5. Addition of specific styling with new class to some form-data div;
 							-->
 							<div class="form-data form-data-first-name">
 								<label for="first-name">Prénom</label>
@@ -153,8 +156,8 @@
 									À combien de tournois GameOn avez-vous déjà participé ?
 								</label>
 								<input
-									type="number"
 									class="text-control"
+									type="number"
 									id="number-of-tournaments"
 									name="number-of-tournaments"
 									min="0"
@@ -163,7 +166,8 @@
 							</div>
 
 							<div class="form-data form-data-tournament-location">
-								<!-- Inclusion of the paragraph used as the label for the rounded checkboxes. Also see the comment #4 -->
+								
+								<!-- Inclusion of the paragraph used as the label for the rounded checkboxes. Also see the comment #3 -->
 								<p class="rounded-checkbox-group-label">Quelles ville ?</p>
 
 								<div class="rounded-checkbox-group">
@@ -250,10 +254,7 @@
 								/>
 
 								<!-- Removal of not allowed attribut "required" on this label -->
-								<label
-									class="checkbox-label"
-									for="checkbox-terms-and-conditions"
-								>
+								<label class="checkbox-label" for="checkbox-terms-and-conditions">
 									<span class="checkbox-icon"></span>
 									J'ai lu et accepté les conditions d'utilisation.
 								</label>
@@ -286,7 +287,7 @@
 							a été reçue.
 						</p>
 
-						<button type="reset" form="modal-form" class="confirmation-message-close-btn content-hidden btn-submit">
+						<button type="reset" form="modal-form" class="confirmation-message-close-btn btn-submit content-hidden">
 							Fermer
 						</button>
 					</div>
