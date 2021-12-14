@@ -233,21 +233,27 @@ input {
 	margin-bottom: 0.2rem;
 }
 
+.form-data[data-error-visible="true"] {
+	margin-bottom: 0;
+}
+
 .form-data[data-error]::after {
 	content: attr(data-error);
 	font-size: 0.5em;
 	color: #e54858;
 	display: block;
 	margin-top: 10px;
-	margin-bottom: 0;
+	margin-bottom: 2px;
 	text-align: left;
 	line-height: 0.3;
 	opacity: 0;
 	transition: 0.3s;
 }
+
 .form-data[data-error-visible="true"]::after {
 	opacity: 1;
 }
+
 .form-data[data-error-visible="true"] .text-control {
 	border: 2px solid #e54858;
 }
@@ -256,8 +262,16 @@ input {
 	margin-bottom: 0.7rem;
 }
 
+.form-data-birthdate[data-error-visible="true"] {
+	margin-bottom: 0.4rem;
+}
+
 .form-data-number-of-tournaments-attended {
 	margin-bottom: 0.8rem;
+}
+
+.form-data-number-of-tournaments-attended[data-error-visible="true"] {
+	margin-bottom: 0.7rem;
 }
 
 .form-data-tournament-location {
@@ -266,13 +280,21 @@ input {
 	margin-bottom: 0;
 }
 
+.form-data-tournament-location[data-error-visible="true"] {
+	margin-bottom: 0.1rem;
+}
+
 .form-data-tournament-location[data-error-visible="true"]::after {
-	margin-top: 3px;
-	margin-bottom: 5px;
+	margin-top: 6px;
+	margin-bottom: 7px;
 }
 
 .form-data-terms-conditions-and-newsletter {
 	margin-bottom: 1rem;
+}
+
+.form-data-terms-conditions-and-newsletter[data-error-visible="true"]::after {
+	margin-top: 12px;
 }
 
 /* 
@@ -605,6 +627,32 @@ input {
 	}
 }
 
+@media screen and (max-width: 1199px) {
+	/* - Main content - */
+
+	/* Modal form */
+	
+	.form-data[data-error-visible="true"] {
+		margin-bottom: 0.3rem;
+	}
+
+	.form-data-birthdate[data-error-visible="true"] {
+		margin-bottom: 0.4rem;
+	}
+
+	.form-data-tournament-location[data-error-visible="true"]::after {
+		margin-top: 3px;
+	}
+
+	.form-data-number-of-tournaments-attended[data-error-visible="true"] {
+		margin-bottom: 0.6rem;
+	}
+
+	.form-data-terms-conditions-and-newsletter[data-error-visible="true"]::after {
+		margin-top: 10px;
+	}
+}
+
 @media screen and (max-width: 1150px) {
 	/* Main content */
 
@@ -864,6 +912,10 @@ input {
 		margin-bottom: 0.7rem;
 	}
 
+	.form-data-birthdate[data-error-visible="true"] {
+		margin-bottom: 0.7rem;
+	}
+
 	.form-data-number-of-tournaments-attended {
 		margin-bottom: 0.5rem;
 	}
@@ -1104,8 +1156,39 @@ input {
 		min-height: 38rem;
 	}
 
+	.form-data[data-error-visible="true"] {
+		margin-bottom: 0;
+	}
+
+	.form-data[data-error-visible="true"]::after {
+		margin-top: 6px;
+		margin-bottom: -2px;
+		line-height: 1.5;
+	}
+
+	.form-data-birthdate[data-error-visible="true"]::after {
+		margin-bottom: 5px;
+	}
+
+	.form-data-number-of-tournaments-attended[data-error-visible="true"]::after {
+		margin-bottom: 4px;
+	}
+
 	.form-data-tournament-location[data-error-visible="true"]::after {
-		margin-bottom: 7px;
+		margin-top: -2px;
+		margin-bottom: 2px;
+	}
+
+	.form-data-tournament-location[data-error-visible="true"] .rounded-checkbox-group-label {
+		margin-bottom: 0.5rem;
+	}
+	
+	.form-data-tournament-location[data-error-visible="true"] .rounded-checkbox-group {
+		margin-bottom: 0;
+	}
+
+	.form-data-terms-conditions-and-newsletter[data-error-visible="true"]::after {
+		margin-top: 7px;
 	}
 
 	.checkbox-label {
@@ -1158,13 +1241,16 @@ input {
 	}
 }
 
-@media screen and (max-width: 400px) {
-
-	/* - Main content - */
-
-	/* Modal form */
+/* IphoneX error message margin-top */
+@media screen and (max-width: 375px) and (max-height: 700px) {
 	.form-data-terms-conditions-and-newsletter[data-error-visible="true"]::after {
-		margin-top: -2px;
+		margin-top: -4px;
+	}
+}
+
+@media screen and (max-width: 360px) and (max-height: 800px) {
+	.form-data-terms-conditions-and-newsletter[data-error-visible="true"]::after {
+		margin-top: -4px;
 	}
 }
 
@@ -1175,13 +1261,7 @@ input {
 	/* Modal form */
 
 	.form-data[data-error-visible="true"]::after {
-		font-size: 0.43em;
-		line-height: 1.5;
-	}
-	
-	.form-data-tournament-location[data-error-visible="true"]::after {
-		margin-top: -6px;
-		margin-bottom: 14px;
+		font-size: 0.44em;
 	}
 }
 
@@ -1195,6 +1275,14 @@ input {
 	/* - Main content - */
 
 	/* Modal form */
+
+	.form-data-number-of-tournaments-attended[data-error-visible="true"]::after {
+		margin-bottom: 2px;
+	}
+	
+	.form-data-terms-conditions-and-newsletter[data-error-visible="true"]::after {
+		margin-top: -7px;
+	}
 
 	.rounded-checkbox-group {
 		margin-bottom: 0.6rem;
@@ -1236,9 +1324,18 @@ input {
 	.form-data[data-error-visible="true"]::after {
 		font-size: 0.4em;
 	}
-
 	.text-control {
 		font-size: 1.15rem;
+	}
+}
+
+@media screen and (max-width: 309px) {
+	/* - Main content - */
+
+	/* Modal form */
+
+	.form-data-tournament-location[data-error-visible="true"]::after {
+		margin-bottom: 10px;
 	}
 }
 
