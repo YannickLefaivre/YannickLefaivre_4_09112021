@@ -273,8 +273,11 @@ function validateEmailField() {
   var emailFieldId = ".form-data-email";
   var emailInputValue = getInputValue("email");
 
-  // Email address validation regex found on the input element page, in the email type section, of the standard HTML Living specification
-  var emailPattern = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  /* 
+    Email address validation regex found on the input element page, in the email type section, 
+    of the standard HTML Living specification than I modified for not allow email adress with dotless domain name.
+  */
+  var emailPattern = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z](?:[a-zA-Z]{0,61}[a-zA-Z])?)$/;
 
  
   if(!emailPattern.test(emailInputValue) || emailInputValue.length === 0) {
@@ -416,7 +419,7 @@ function validate() {
   if(!validateNameField(
     "last-name", 
     ".form-data-last-name", 
-    "Veuillez entrer 2 caractères ou plus pour le champ du nom.")) {
+    "Veuillez entrer 2 caractères ou plus pour le champ du nom de famille.")) {
 
     return false;
 
