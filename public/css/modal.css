@@ -266,6 +266,15 @@ input {
 	margin-bottom: 0.4rem;
 }
 
+.form-data-birthdate[data-error="Vous devez entrer une date de naissance supérieur ou égale à 5 ans par rapport à l'année en cours."] {
+	margin-bottom: -0.1rem;
+}
+
+.form-data-birthdate[data-error="Vous devez entrer une date de naissance supérieur ou égale à 5 ans par rapport à l'année en cours."]::after {
+	margin-top: 4px;
+	line-height: 1.5;
+}
+
 .form-data-number-of-tournaments-attended {
 	margin-bottom: 0.8rem;
 }
@@ -639,6 +648,10 @@ input {
 	.form-data-birthdate[data-error-visible="true"] {
 		margin-bottom: 0.4rem;
 	}
+	
+	.form-data-birthdate[data-error="Vous devez entrer une date de naissance supérieur ou égale à 5 ans par rapport à l'année en cours."] {
+		margin-bottom: 0rem;
+	}
 
 	.form-data-tournament-location[data-error-visible="true"]::after {
 		margin-top: 3px;
@@ -916,6 +929,10 @@ input {
 		margin-bottom: 0.7rem;
 	}
 
+	.form-data-birthdate[data-error="Vous devez entrer une date de naissance supérieur ou égale à 5 ans par rapport à l'année en cours."] {
+		margin-bottom: 0.4rem;
+	}
+
 	.form-data-number-of-tournaments-attended {
 		margin-bottom: 0.5rem;
 	}
@@ -1168,6 +1185,10 @@ input {
 
 	.form-data-birthdate[data-error-visible="true"]::after {
 		margin-bottom: 5px;
+	}
+
+	.form-data-birthdate[data-error="Vous devez entrer une date de naissance supérieur ou égale à 5 ans par rapport à l'année en cours."]::after {
+		margin-bottom: 8px;
 	}
 
 	.form-data-number-of-tournaments-attended[data-error-visible="true"]::after {

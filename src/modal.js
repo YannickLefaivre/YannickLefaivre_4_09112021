@@ -31,8 +31,6 @@ const form = document.querySelector("form");
 
 const formData = document.querySelectorAll(".form-data");
 
-const submitButton = document.querySelector(".button");
-
 const modalContent = document.querySelector(".modal-content");
 
 const modalBody = document.querySelector(".modal-body");
@@ -296,24 +294,48 @@ function validateEmailField() {
 }
 
 
-// Validation of the birthdate field when it is not empty.
+// Validation of the date of birth field when it is not empty or when the year is not less than 5 years compared to the current year.
 function validateBirthdateField() {
 
   var birthdateFieldId = ".form-data-birthdate";
 
-  if(getInputValue("birthdate").length === 0) {
+  var birthdateInputValue = getInputValue("birthdate");
+  
+
+  /* 
+    Retrieve the year part of the value of the date of birth field entered by 
+    the user with a regular expression and the .match() method.
+   */
+  var birthdateYearPattern = /^\d{4}/;
+  var userBirthdateYearInString = birthdateInputValue.match(birthdateYearPattern);
+
+  // Converting the string of the year of the user's date of birth to an integer value.
+  var userBirthdateYearInInteger = parseInt(userBirthdateYearInString); 
+
+  /* 
+    Obtaining the current year and from it calculates the interval in which the user 
+    can choose a date: 5 years before the current year. 
+  */
+  var currentYear = new Date().getFullYear();
+  var yearInterval = currentYear - 5;
+
+  if(birthdateInputValue.length === 0) {
 
     displayErrorMessage(birthdateFieldId, "Vous devez entrer votre date de naissance.");
     
-    return false;
-    
+  } else if(userBirthdateYearInInteger > yearInterval) {
+
+    displayErrorMessage(birthdateFieldId, "Vous devez entrer une date de naissance supérieur ou égale à 5 ans par rapport à l'année en cours.");
+
   } else {
 
     deleteErrorMessage(birthdateFieldId);
 
+    return true;
+
   }
 
-  return true;
+  return false;
 }
 
 // Validation of the number of tournaments field when it is not empty and contains only numbers.
@@ -402,17 +424,19 @@ function validateTermsAndConditionsFieldset() {
 
 
 /* 
-  Validation of the form when all the fields are validated, otherwise at the first invalid field, 
-  cancel sending of the form to the server. 
+  Validation of the form when all the fields are validated, otherwise if some fields are invalid,
+  cancel sending the form to the server.
 */
 function validate() {
+
+  var submitOK = true;
 
   if(!validateNameField(
     "first-name", 
     ".form-data-first-name", 
     "Veuillez entrer 2 caractères ou plus pour le champ du prénom.")) {
 
-    return false;
+    submitOK = false;
 
   }
 
@@ -421,42 +445,50 @@ function validate() {
     ".form-data-last-name", 
     "Veuillez entrer 2 caractères ou plus pour le champ du nom de famille.")) {
 
-    return false;
+    submitOK = false;
 
   }
 
   if(!validateEmailField()) {
 
-    return false;
+    submitOK = false;
 
   }
 
   if(!validateBirthdateField()) {
 
-    return false;
+    submitOK = false;
 
   }
 
   if(!validateNumberOfTournamentsField()) {
 
-    return false;
+    submitOK = false;
 
   }
 
   if(!validateTournamentLocationsFieldset()) {
 
-    return false;
+    submitOK = false;
 
   }
 
   if(!validateTermsAndConditionsFieldset()) {
 
-    return false;
+    submitOK = false;
 
   }
+  
+  // all fields have not passed validation
+  if(!submitOK) {
 
-  // all the fields have passed validation
-  return true;
+    return false;
+
+  } else {
+
+    return true;
+
+  }
 }
 
 // Displays the confirmation message that the form submission was successful
@@ -508,7 +540,7 @@ function onSubmit(event) {
   event.preventDefault();
 
   /* 
-    Calls the validate () function to check the validity of each field in the form.
+    Calls the validate() function to check the validity of each field in the form.
     If there is one that is not valid an error message will be displayed below the 
     invalid field and validation will not go further until this field is validated.
   */
@@ -548,12 +580,6 @@ modalCloseButton.addEventListener("click", function() {
   }
 
 });
-
-/*
-  Addition of an event listener to validate the form when the user clicks 
-  on the "C'est parti" button. 
-*/
-submitButton.addEventListener("click", validate);
 
 // Adding a submit event listener to the form to change the default behavior 
 form.addEventListener("submit", onSubmit);
